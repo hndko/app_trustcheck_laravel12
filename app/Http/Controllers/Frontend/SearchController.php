@@ -172,8 +172,14 @@ class SearchController extends Controller
             return redirect()->route('search.loading', $company->id);
         }
 
+        $summarySnippet = Str::limit(strip_tags($company->ai_summary ?? 'Laporan verifikasi reputasi dan analisis uji kelayakan publik untuk ' . $company->name), 150);
+
         $data = [
-            'title' => $company->name . ' — Laporan Due Diligence & Reputasi',
+            'title' => $company->name . ' — Laporan Due Diligence & Reputasi | TrustCheck AI',
+            'metaDescription' => "Cek Trust Score ({$company->trust_score}/100), tingkat risiko ({$company->risk_level}), dan analisis due diligence publik untuk {$company->name}.",
+            'ogTitle' => "Trust Score {$company->name}: {$company->trust_score}/100 ({$company->risk_level})",
+            'ogDescription' => $summarySnippet,
+            'canonicalUrl' => route('search.result', $company->id),
             'company' => $company,
         ];
 

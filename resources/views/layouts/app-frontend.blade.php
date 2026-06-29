@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'TrustCheck AI — Mesin Pencari Due Diligence & Reputasi Perusahaan' }}</title>
+    <meta name="description" content="{{ $metaDescription ?? 'Mesin pencari due diligence berbasis AI untuk menganalisis reputasi perusahaan, verifikasi keamanan website, dan riwayat keluhan publik di Indonesia secara objektif.' }}">
+    <link rel="canonical" href="{{ $canonicalUrl ?? url()->current() }}">
+
+    <!-- OpenGraph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ $canonicalUrl ?? url()->current() }}">
+    <meta property="og:title" content="{{ $ogTitle ?? ($title ?? 'TrustCheck AI — Mesin Pencari Due Diligence & Reputasi Perusahaan') }}">
+    <meta property="og:description" content="{{ $ogDescription ?? ($metaDescription ?? 'Analisis reputasi bisnis dan verifikasi due diligence secara transparan, akurat, dan berteknologi AI.') }}">
+    <meta property="og:site_name" content="TrustCheck AI">
+    <meta property="og:image" content="{{ asset('assets/images/og-default.png') }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $ogTitle ?? ($title ?? 'TrustCheck AI — Mesin Pencari Due Diligence & Reputasi Perusahaan') }}">
+    <meta name="twitter:description" content="{{ $ogDescription ?? ($metaDescription ?? 'Analisis reputasi bisnis dan verifikasi due diligence secara transparan, akurat, dan berteknologi AI.') }}">
     
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>

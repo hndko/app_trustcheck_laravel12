@@ -8,7 +8,11 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\CompanyController;
 use App\Http\Controllers\Frontend\CompareController;
 use App\Http\Controllers\Frontend\SearchController;
+use App\Http\Controllers\Frontend\SitemapController;
 use Illuminate\Support\Facades\Route;
+
+// SEO Sitemap Production
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
 
 // Rute Autentikasi Portal Kelola (Netral tanpa nama role)
 Route::get('/login', [AuthController::class, 'login'])->name('login');

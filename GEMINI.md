@@ -112,7 +112,7 @@ Jika terdapat konflik antara kebiasaan umum penulisan kode dengan aturan di bawa
 
 ### 6. Konvensi Layout & Blade
 - **Pembatasan Yield:** Layout utama hanya boleh menyediakan satu `@yield('content')` sebagai slot area konten utama.
-- **Pengiriman Title:** Judul halaman dikirim dari controller melalui variabel `$title`, kemudian dirender langsung di layout utama. Jangan menambahkan `@yield('title')`, `@yield('styles')`, atau `@yield('scripts')` baru.
+- **Pengiriman Title & Metadata SEO:** Judul halaman dan metadata SEO (seperti `$metaDescription`, `$ogTitle`, `$ogDescription`, `$canonicalUrl`) dikirim langsung dari associative array `$data` di Controller untuk dirender pada layout utama (`app-frontend.blade.php`). Jangan menambahkan `@yield('title')`, `@yield('styles')`, atau `@yield('scripts')` baru. Generator sitemap otomatis tersedia di rute `/sitemap.xml` melalui `SitemapController`.
 - **Pemanfaatan Asset & Tailwind CSS v4:** Seluruh styling wajib menggunakan Tailwind CSS v4. Ikuti aturan standar Tailwind v4 berikut agar tidak menimbulkan warning/error:
   - Gunakan `shrink-0` (bukan `flex-shrink-0`).
   - Gunakan `grow` (bukan `flex-grow`).
