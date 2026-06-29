@@ -25,10 +25,18 @@
                 <span>TrustCheck <span class="text-[#2563EB] font-extrabold">AI</span></span>
             </a>
 
-            <div class="flex items-center gap-4">
-                <div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F1F5F9] border border-[#E2E8F0] text-xs font-semibold text-[#475569]">
+            <div class="flex items-center gap-3 sm:gap-4">
+                <a href="{{ route('compare.index') }}" class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-[#475569] hover:text-[#2563EB] hover:bg-[#F1F5F9] transition-all">
+                    <i data-lucide="git-compare" class="w-4 h-4"></i>
+                    <span>Komparasi</span>
+                </a>
+                <a href="{{ route('admin.dashboard') }}" class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-[#475569] hover:text-[#2563EB] hover:bg-[#F1F5F9] transition-all">
+                    <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                    <span>Admin</span>
+                </a>
+                <div class="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F1F5F9] border border-[#E2E8F0] text-xs font-semibold text-[#475569]">
                     <span class="w-2 h-2 rounded-full bg-[#16A34A]"></span>
-                    <span>Provider Aktif: {{ strtoupper(config('ai.default', 'GEMINI')) }}</span>
+                    <span>AI: {{ strtoupper(config('ai.default', 'GEMINI')) }}</span>
                 </div>
                 <a href="{{ route('search.index') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-sm font-semibold shadow-sm transition-all duration-150">
                     <i data-lucide="search" class="w-4 h-4"></i>

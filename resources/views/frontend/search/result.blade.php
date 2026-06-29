@@ -24,10 +24,14 @@
             </div>
         </div>
 
-        <div class="flex items-center gap-3">
+        <div class="flex flex-wrap items-center gap-3">
+            <a href="{{ route('company.pdf', $company->id) }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#EFF6FF] border border-[#BFDBFE] hover:bg-[#DBEAFE] text-xs font-bold text-[#1D4ED8] shadow-2xs transition-all">
+                <i data-lucide="file-down" class="w-4 h-4"></i>
+                <span>Unduh PDF Resmi</span>
+            </a>
             <button onclick="window.print()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#D1D5DB] hover:bg-[#F8FAFC] text-xs font-semibold text-[#334155] shadow-2xs transition-all cursor-pointer">
                 <i data-lucide="printer" class="w-4 h-4"></i>
-                <span>Cetak Laporan</span>
+                <span>Cetak</span>
             </button>
             <a href="{{ route('search.index') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-xs font-semibold text-white shadow-sm transition-all">
                 <i data-lucide="search" class="w-4 h-4"></i>

@@ -49,13 +49,13 @@ Fase ini bertujuan untuk menghubungkan adapter pengumpul data ke sumber eksterna
 
 ---
 
-## 📈 Fase 3: Fitur Ekstrem & Pelaporan Enterprise (Roadmap)
+## 📈 Fase 3: Fitur Ekstrem & Pelaporan Enterprise (Selesai ✅)
 
 Fase lanjutan untuk melengkapi kebutuhan pengguna bisnis tingkat tinggi.
 
-- [ ] **Ekspor Laporan Resmi (PDF Generation):**
-  - [ ] Menambahkan tombol unduh laporan due diligence berformat PDF dengan kop surat resmi TrustCheck AI.
-- [ ] **Komparasi Reputasi Perusahaan (Company Comparison):**
-  - [ ] Fitur membandingkan 2 atau 3 perusahaan sekaligus dalam satu layar bertabel berdampingan.
-- [ ] **Panel Admin & Analitik Penggunaan Token:**
-  - [ ] Dasbor internal untuk memantau jumlah pencarian harian, rata-rata Trust Score, dan konsumsi token API AI.
+- [x] **Ekspor Laporan Resmi (PDF Generation):**
+  - [x] Menambahkan tombol unduh laporan due diligence berformat PDF dengan kop surat resmi TrustCheck AI.
+- [x] **Komparasi Reputasi Perusahaan (Company Comparison):**
+  - [x] Fitur membandingkan 2 atau 3 perusahaan sekaligus dalam satu layar bertabel berdampingan.
+- [x] **Panel Admin & Analitik Penggunaan Token:**
+  - [x] Dasbor internal untuk memantau jumlah pencarian harian, rata-rata Trust Score, dan konsumsi token API AI.
