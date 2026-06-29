@@ -23,7 +23,7 @@
                 window.location.href = '{{ route('compare.index') }}?companies=' + this.selected.join(',');
             }
         }">
-            <div class="relative min-w-[260px]">
+            <div class="relative min-w-65">
                 <select x-model="selected" @change="updateQuery()" multiple class="hidden">
                 </select>
                 <div class="text-xs font-bold text-[#475569] mb-1">Pilih Perusahaan untuk Dibandingkan (Maks. 3):</div>
@@ -59,7 +59,7 @@
     @else
         <!-- Comparison Side-by-Side Matrix Table -->
         <div class="bg-white rounded-2xl border border-[#E5E7EB] shadow-sm overflow-hidden overflow-x-auto">
-            <table class="w-full text-left border-collapse min-w-[700px]">
+            <table class="w-full text-left border-collapse min-w-175">
                 <thead>
                     <tr class="bg-[#F8FAFC] border-b border-[#E5E7EB]">
                         <th class="py-5 px-6 text-xs font-extrabold text-[#475569] uppercase tracking-wider w-1/4">Indikator Analisis</th>

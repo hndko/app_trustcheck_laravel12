@@ -62,10 +62,7 @@
 
                 <!-- Score Display -->
                 <div class="inline-flex items-baseline justify-center gap-1 mb-4">
-                    <span class="text-6xl font-black tracking-tight 
-                        @if($company->trust_score >= 80) text-[#16A34A]
-                        @elseif($company->trust_score >= 60) text-[#D97706]
-                        @else text-[#DC2626] @endif">
+                    <span class="text-6xl font-black tracking-tight {{ $company->trust_score >= 80 ? 'text-[#16A34A]' : ($company->trust_score >= 60 ? 'text-[#D97706]' : 'text-[#DC2626]') }}">
                         {{ $company->trust_score }}
                     </span>
                     <span class="text-xl font-bold text-[#94A3B8]">/ 100</span>
@@ -106,7 +103,7 @@
                 <dl class="space-y-3.5 text-xs">
                     <div class="flex justify-between items-start gap-4">
                         <dt class="text-[#64748B] font-medium shrink-0">Situs Web Resmi</dt>
-                        <dd class="text-[#0F172A] font-semibold text-right truncate max-w-[180px]">
+                        <dd class="text-[#0F172A] font-semibold text-right truncate max-w-45">
                             @if($company->website)
                                 <a href="{{ $company->website }}" target="_blank" class="text-[#2563EB] hover:underline flex items-center justify-end gap-1">
                                     <span>{{ parse_url($company->website, PHP_URL_HOST) ?? $company->website }}</span>
@@ -140,7 +137,7 @@
 
                     <div class="flex justify-between items-start gap-4">
                         <dt class="text-[#64748B] font-medium shrink-0">Kontak Resmi</dt>
-                        <dd class="text-[#0F172A] font-semibold text-right truncate max-w-[160px]">{{ $company->email ?? $company->phone ?? '-' }}</dd>
+                        <dd class="text-[#0F172A] font-semibold text-right truncate max-w-40">{{ $company->email ?? $company->phone ?? '-' }}</dd>
                     </div>
                 </dl>
             </div>
@@ -302,10 +299,7 @@
                     @forelse($company->news as $item)
                     <div class="relative">
                         <!-- Timeline bullet -->
-                        <div class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-white border-2 
-                            @if($item->sentiment === 'Positive') border-[#16A34A]
-                            @elseif($item->sentiment === 'Negative') border-[#DC2626]
-                            @else border-[#2563EB] @endif"></div>
+                        <div class="absolute -left-7.75 top-1.5 w-3.5 h-3.5 rounded-full bg-white border-2 {{ $item->sentiment === 'Positive' ? 'border-[#16A34A]' : ($item->sentiment === 'Negative' ? 'border-[#DC2626]' : 'border-[#2563EB]') }}"></div>
                         
                         <div class="flex items-center justify-between gap-2 mb-1">
                             <span class="text-xs font-bold text-[#2563EB]">{{ $item->source }}</span>

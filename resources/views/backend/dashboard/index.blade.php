@@ -105,7 +105,7 @@
             <span class="text-xs text-[#94A3B8]">8 Entitas Terakhir</span>
         </div>
         <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse min-w-[600px]">
+            <table class="w-full text-left border-collapse min-w-150">
                 <thead>
                     <tr class="bg-[#0F172A] text-[#94A3B8] text-xs font-bold uppercase tracking-wider border-b border-[#334155]">
                         <th class="py-4 px-6">Nama Perusahaan</th>

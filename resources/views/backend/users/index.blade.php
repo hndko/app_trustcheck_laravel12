@@ -17,7 +17,7 @@
     <!-- Users Table -->
     <div class="bg-[#1E293B] rounded-2xl border border-[#334155] shadow-sm overflow-hidden">
         <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse min-w-[650px]">
+            <table class="w-full text-left border-collapse min-w-162.5">
                 <thead>
                     <tr class="bg-[#0F172A] text-[#94A3B8] text-xs font-bold uppercase tracking-wider border-b border-[#334155]">
                         <th class="py-4 px-6">Nama Lengkap</th>
