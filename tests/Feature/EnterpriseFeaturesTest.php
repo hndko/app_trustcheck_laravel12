@@ -90,3 +90,25 @@ it('allows user to access edit profile page', function () {
     $response->assertStatus(200);
     $response->assertSee('Pengaturan Profil Saya');
 });
+
+it('allows authorized user to access provider management and switch active ai driver', function () {
+    $permission = Permission::firstOrCreate(['name' => 'access_portal_kelola']);
+    $user = User::factory()->create();
+    $user->givePermissionTo($permission);
+
+    $response = $this->actingAs($user)->get('/portal-kelola/providers');
+    $response->assertStatus(200);
+    $response->assertSee('Kelola Provider & Driver AI Aktif', false);
+
+    $postResponse = $this->actingAs($user)->post('/portal-kelola/providers', [
+        'default_provider' => 'openai',
+        'providers' => [
+            'openai' => [
+                'model' => 'gpt-4o',
+            ],
+        ],
+    ]);
+
+    $postResponse->assertStatus(302);
+    expect(\App\Models\Setting::where('key', 'ai_default_provider')->value('value'))->toBe('openai');
+});

@@ -51,6 +51,10 @@
                     <i data-lucide="help-circle" class="w-5 h-5"></i>
                     <span>Kelola FAQ Publik</span>
                 </a>
+                <a href="{{ route('portal.providers.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('portal.providers.*') ? 'bg-[#2563EB] text-white font-bold shadow-sm' : 'text-[#94A3B8] hover:bg-[#334155] hover:text-white font-semibold' }} text-sm transition-all">
+                    <i data-lucide="cpu" class="w-5 h-5"></i>
+                    <span>Kelola Provider AI</span>
+                </a>
                 <a href="{{ route('portal.users.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('portal.users.*') ? 'bg-[#2563EB] text-white font-bold shadow-sm' : 'text-[#94A3B8] hover:bg-[#334155] hover:text-white font-semibold' }} text-sm transition-all">
                     <i data-lucide="users" class="w-5 h-5"></i>
                     <span>Kelola Pengguna</span>

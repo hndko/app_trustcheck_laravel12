@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Backend\FaqController;
 use App\Http\Controllers\Backend\PortalController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\ProviderController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\CompanyController;
 use App\Http\Controllers\Frontend\CompareController;
@@ -41,6 +42,10 @@ Route::middleware(['auth', 'permission:access_portal_kelola'])->prefix('portal-k
     Route::get('/', [PortalController::class, 'dashboard'])->name('portal.dashboard');
     Route::resource('faq', FaqController::class)->names('portal.faq');
     
+    // Kelola Provider AI Dinamis
+    Route::get('/providers', [ProviderController::class, 'index'])->name('portal.providers.index');
+    Route::post('/providers', [ProviderController::class, 'update'])->name('portal.providers.update');
+
     // Manajemen Pengguna & Profil (Dilindungi izin manage_users atau bypass superadmin)
     Route::resource('users', UserController::class)->names('portal.users');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('portal.profile.edit');

@@ -39,7 +39,7 @@ Dokumen ini berisi informasi lengkap spesifikasi project **TrustCheck AI** sekal
    - Ringkasan Berita (*Vertical Timeline*).
    - Referensi & Transparansi Sumber (*Accordion grid* menampilkan daftar sumber publik, status, *confidence score*, dan waktu pembaruan agar user dapat melakukan verifikasi mandiri).
    - Disclaimer Hukum yang jelas di bagian bawah laporan.
-5. **Konfigurasi AI Provider Fleksibel:** Sistem mendukung integrasi berbagai penyedia layanan LLM (*OpenAI, Gemini, Claude, OpenRouter, atau Custom Base URL*) sehingga memudahkan pergantian model AI sesuai kebutuhan biaya dan performa tanpa mengubah logika bisnis utama.
+5. **Konfigurasi AI Provider Fleksibel & Dinamis:** Sistem mendukung integrasi berbagai penyedia layanan LLM (*OpenAI, Gemini, Claude, OpenRouter, atau Custom Base URL*). Perpindahan provider aktif (*active driver switching*) dan pengaturan kredensial API dapat dikelola langsung secara real-time melalui antarmuka dasbor kelola (`/portal-kelola/providers`) yang disimpan dalam tabel database `settings` dan di-override otomatis saat *booting* di `AppServiceProvider`, sehingga tidak bergantung semata-mata pada file `.env`. Referensi konsep desain antarmuka login dan dasbor enterprise tercatat pada `docs/06-design-concept-login-dashboard.md`.
 
 ---
 
@@ -105,7 +105,7 @@ Jika terdapat konflik antara kebiasaan umum penulisan kode dengan aturan di bawa
   - Halaman portal pencarian utama dan hasil due diligence berada di `resources/views/frontend/` atau subfolder modul terkait.
   - Layout utama berada di `resources/views/layouts/`.
 - **Larangan Folder Partials:** Jangan membuat folder atau view bertipe `partials`. Markup UI wajib ditulis penuh di dalam file view fitur terkait agar kode tetap mudah ditelusuri dalam satu file.
-- **Pengaturan Sistem:** Identitas sistem (Judul aplikasi, konfigurasi LLM aktif, API Key) bersumber dari `.env` atau tabel pengaturan/config, tidak boleh di-*hardcode* di dalam view atau controller.
+- **Pengaturan Sistem:** Identitas sistem (Judul aplikasi, konfigurasi LLM aktif, API Key) bersumber dari tabel database `settings` (dikemas via `ProviderController` & `AppServiceProvider`) atau fallback ke `.env`, tidak boleh di-*hardcode* di dalam view atau controller.
 
 ### 5. File Layout Utama
 

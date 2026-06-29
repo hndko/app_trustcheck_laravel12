@@ -16,6 +16,8 @@ Direktori ini berisi seluruh pedoman, rancangan arsitektur, spesifikasi teknis, 
    *Daftar periksa rinci pengerjaan proyek dari Fase 1 (MVP) hingga Fase 6 (Pemantauan Real-Time & Reliability) yang kini telah 100% tuntas.*
 5. [**05-queue-worker-production.md**](file:///d:/laragon/www/app_trustcheck_laravel12/docs/05-queue-worker-production.md) — **Panduan Konfigurasi Queue Worker Production**
    *Pedoman pengaturan sistem antrean latar belakang (*background job worker*) pada Linux server menggunakan Supervisor atau Laravel Horizon.*
+6. [**06-design-concept-login-dashboard.md**](file:///d:/laragon/www/app_trustcheck_laravel12/docs/06-design-concept-login-dashboard.md) — **Konsep Desain Halaman Login & Dasbor (Modern Enterprise UI/UX)**
+   *Panduan filosofis visual agar tampilan portal autentikasi dan dasbor kelola tidak kaku, responsif penuh, dan menghindari kesan stereotip AI template.*
 
 ---
 
