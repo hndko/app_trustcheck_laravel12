@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -137,7 +138,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        if ($user->id === auth()->id() || $user->email === 'admin@trustcheck.id') {
+        if ($user->id === auth()->id() || $user->email === 'superadmin@example.com') {
             return redirect()->route('portal.users.index')
                 ->with('error', 'Akun superadmin utama atau akun Anda sendiri tidak dapat dihapus.');
         }

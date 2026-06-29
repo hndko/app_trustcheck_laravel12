@@ -14,14 +14,6 @@
         </a>
     </div>
 
-    <!-- Alert Notification -->
-    @if(session('success'))
-        <div class="p-4 rounded-xl bg-[#10B981]/20 border border-[#10B981]/30 text-[#10B981] text-xs font-bold flex items-center gap-2">
-            <i data-lucide="check-circle" class="w-4 h-4 shrink-0"></i>
-            <span>{{ session('success') }}</span>
-        </div>
-    @endif
-
     <!-- Table -->
     <div class="bg-[#1E293B] rounded-2xl border border-[#334155] shadow-sm overflow-hidden">
         <div class="overflow-x-auto">

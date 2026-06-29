@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
 
         // Buat pengguna pengelola sistem utama
         $admin = User::firstOrCreate(
-            ['email' => 'admin@trustcheck.id'],
+            ['email' => 'superadmin@example.com'],
             [
                 'name' => 'Superadmin TrustCheck AI',
                 'password' => Hash::make('password'),

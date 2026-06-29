@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\CompareController;
-use App\Http\Controllers\FaqController;
-use App\Http\Controllers\PortalController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Backend\FaqController;
+use App\Http\Controllers\Backend\PortalController;
+use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Frontend\CompanyController;
+use App\Http\Controllers\Frontend\CompareController;
+use App\Http\Controllers\Frontend\SearchController;
 use Illuminate\Support\Facades\Route;
 
 // Rute Autentikasi Portal Kelola (Netral tanpa nama role)

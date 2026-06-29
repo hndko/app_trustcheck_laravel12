@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
 use App\Jobs\ProcessDueDiligenceJob;
 use App\Models\Company;
 use App\Models\Faq;

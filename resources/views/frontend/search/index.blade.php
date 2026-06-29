@@ -1,9 +1,9 @@
 @extends('layouts.app-frontend')
 
 @section('content')
-<div class="py-16 sm:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="py-16 sm:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
     <!-- Hero Header -->
-    <div class="text-center max-w-3xl mx-auto mb-12">
+    <div class="text-center max-w-3xl mx-auto">
         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-xs font-bold uppercase tracking-wider mb-6">
             <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
             <span>Intelijensi Due Diligence & Verifikasi Reputasi</span>
@@ -17,7 +17,7 @@
     </div>
 
     <!-- Search Box Card -->
-    <div class="bg-white rounded-2xl border border-[#E5E7EB] shadow-md p-4 sm:p-6 mb-12 max-w-3xl mx-auto">
+    <div class="bg-white rounded-2xl border border-[#E5E7EB] shadow-md p-4 sm:p-6 max-w-3xl mx-auto">
         <form action="{{ route('search.process') }}" method="POST" class="flex flex-col sm:flex-row gap-3">
             @csrf
             <div class="relative grow">
@@ -65,34 +65,34 @@
     </div>
 
     <!-- Feature Highlights Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-[#E5E7EB]">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-[#E5E7EB]">
         <div class="bg-white p-6 rounded-2xl border border-[#E5E7EB] shadow-sm">
             <div class="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center mb-4">
-                <i data-lucide="database" class="w-5 h-5"></i>
+                <i data-lucide="building-2" class="w-5 h-5"></i>
             </div>
-            <h3 class="font-bold text-base text-[#0F172A] mb-2">Agregasi Multi-Sumber</h3>
+            <h3 class="font-bold text-base text-[#0F172A] mb-2">Informasi Perusahaan</h3>
             <p class="text-xs text-[#64748B] leading-relaxed">
-                Mengumpulkan dan menyaring fakta dari situs resmi, pemberitaan media daring, catatan WHOIS domain, serta portal ulasan publik secara terpadu.
+                Mengumpulkan data resmi dari situs perusahaan, registrasi WHOIS domain, dan identitas korporasi secara terpadu.
             </p>
         </div>
 
         <div class="bg-white p-6 rounded-2xl border border-[#E5E7EB] shadow-sm">
             <div class="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center mb-4">
-                <i data-lucide="scale" class="w-5 h-5"></i>
+                <i data-lucide="message-square" class="w-5 h-5"></i>
             </div>
-            <h3 class="font-bold text-base text-[#0F172A] mb-2">Analisis Objektif Bebas Opini</h3>
+            <h3 class="font-bold text-base text-[#0F172A] mb-2">Reputasi Publik</h3>
             <p class="text-xs text-[#64748B] leading-relaxed">
-                Kecerdasan buatan dirancang ketat untuk menyajikan ringkasan fakta yang netral tanpa penghakiman subjektif maupun klaim tidak berdasar.
+                Menyaring ulasan konsumen, pemberitaan media daring, dan sentimen publik secara netral tanpa opini subjektif.
             </p>
         </div>
 
         <div class="bg-white p-6 rounded-2xl border border-[#E5E7EB] shadow-sm">
             <div class="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center mb-4">
-                <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
             </div>
-            <h3 class="font-bold text-base text-[#0F172A] mb-2">Skor Kepercayaan (Trust Score)</h3>
+            <h3 class="font-bold text-base text-[#0F172A] mb-2">Analisis Teknis Website</h3>
             <p class="text-xs text-[#64748B] leading-relaxed">
-                Kalkulasi bobot terukur 0 - 100 dengan kategorisasi tingkat risiko bisnis untuk membantu validasi awal sebelum penandatanganan kontrak kerja sama.
+                Memeriksa status keamanan HTTPS, validitas sertifikat SSL, serta rekam jejak digital situs web perusahaan.
             </p>
         </div>
     </div>

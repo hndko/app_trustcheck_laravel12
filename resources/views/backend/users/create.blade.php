@@ -33,7 +33,7 @@
                 <label for="email" class="block text-xs font-bold uppercase tracking-wider text-[#94A3B8]">Alamat Email</label>
                 <input type="email" name="email" id="email" value="{{ old('email') }}" required 
                     class="w-full px-4 py-3 rounded-xl bg-[#0F172A] border border-[#334155] focus:border-[#38BDF8] text-white text-sm focus:outline-none transition-colors"
-                    placeholder="Contoh: budi@trustcheck.id">
+                    placeholder="Contoh: budi@example.com">
                 @error('email')
                     <span class="text-xs text-[#EF4444] block">{{ $message }}</span>
                 @enderror

@@ -10,10 +10,36 @@
     @else
         <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     @endif
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="h-full flex items-center justify-center font-sans text-[#F8FAFC] antialiased bg-[#0F172A] px-4">
+
+    <!-- Global Toast Notification -->
+    @if(session('success') || session('error'))
+    <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 4000)"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 translate-y-2 sm:translate-y-0 sm:translate-x-4"
+         x-transition:enter-end="opacity-100 translate-y-0 sm:translate-x-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         class="fixed bottom-6 right-6 z-50 max-w-sm w-full bg-[#1E293B] border {{ session('success') ? 'border-[#16A34A]' : 'border-[#DC2626]' }} text-white p-4 rounded-xl shadow-lg flex items-start gap-3.5">
+        <div class="w-8 h-8 rounded-lg {{ session('success') ? 'bg-[#16A34A]/20 text-[#16A34A]' : 'bg-[#DC2626]/20 text-[#DC2626]' }} flex items-center justify-center shrink-0">
+            <i data-lucide="{{ session('success') ? 'check-circle-2' : 'alert-circle' }}" class="w-5 h-5"></i>
+        </div>
+        <div class="grow pt-0.5">
+            <div class="text-xs font-bold uppercase tracking-wider {{ session('success') ? 'text-[#16A34A]' : 'text-[#DC2626]' }}">
+                {{ session('success') ? 'Berhasil' : 'Perhatian' }}
+            </div>
+            <p class="text-xs text-[#E2E8F0] mt-0.5 leading-relaxed">{{ session('success') ?? session('error') }}</p>
+        </div>
+        <button @click="show = false" class="text-[#64748B] hover:text-white transition-colors p-1 rounded-lg cursor-pointer">
+            <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+    </div>
+    @endif
 
     <div class="max-w-md w-full space-y-8">
         <!-- Logo & Header -->
@@ -27,14 +53,6 @@
             <h2 class="text-xl font-bold text-[#E2E8F0]">Akses Portal Kelola Sistem</h2>
             <p class="text-xs text-[#94A3B8] mt-1">Silakan masukkan alamat email dan kata sandi pengelola resmi.</p>
         </div>
-
-        <!-- Alert Notification -->
-        @if(session('success'))
-            <div class="p-4 rounded-xl bg-[#10B981]/20 border border-[#10B981]/30 text-[#10B981] text-xs font-bold flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 shrink-0"></i>
-                <span>{{ session('success') }}</span>
-            </div>
-        @endif
 
         @if($errors->any())
             <div class="p-4 rounded-xl bg-[#EF4444]/20 border border-[#EF4444]/30 text-[#EF4444] text-xs font-bold flex items-center gap-2">
@@ -51,7 +69,7 @@
                     <label for="email" class="block text-xs font-bold text-[#E2E8F0] uppercase tracking-wider mb-2">Alamat Email</label>
                     <div class="relative">
                         <input type="email" name="email" id="email" value="{{ old('email') }}" required autofocus
-                            placeholder="admin@trustcheck.id"
+                            placeholder="superadmin@example.com"
                             class="w-full px-4 py-3 rounded-xl bg-[#0F172A] border border-[#334155] text-white placeholder-[#64748B] text-sm focus:outline-none focus:border-[#38BDF8] transition-colors pl-11">
                         <i data-lucide="mail" class="w-5 h-5 text-[#64748B] absolute left-3.5 top-3.5"></i>
                     </div>

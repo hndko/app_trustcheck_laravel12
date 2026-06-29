@@ -14,21 +14,6 @@
         </a>
     </div>
 
-    <!-- Alert Notifications -->
-    @if(session('success'))
-        <div class="p-4 rounded-xl bg-[#10B981]/20 border border-[#10B981]/30 text-[#10B981] text-xs font-bold flex items-center gap-2">
-            <i data-lucide="check-circle" class="w-4 h-4 shrink-0"></i>
-            <span>{{ session('success') }}</span>
-        </div>
-    @endif
-
-    @if(session('error'))
-        <div class="p-4 rounded-xl bg-[#EF4444]/20 border border-[#EF4444]/30 text-[#EF4444] text-xs font-bold flex items-center gap-2">
-            <i data-lucide="alert-triangle" class="w-4 h-4 shrink-0"></i>
-            <span>{{ session('error') }}</span>
-        </div>
-    @endif
-
     <!-- Users Table -->
     <div class="bg-[#1E293B] rounded-2xl border border-[#334155] shadow-sm overflow-hidden">
         <div class="overflow-x-auto">
@@ -65,7 +50,7 @@
                                     <a href="{{ route('portal.users.edit', $user->id) }}" class="p-2 rounded-lg bg-[#334155] hover:bg-[#475569] text-white transition-colors" title="Edit Pengguna">
                                         <i data-lucide="edit-3" class="w-4 h-4"></i>
                                     </a>
-                                    @if($user->email !== 'admin@trustcheck.id' && $user->id !== auth()->id())
+                                    @if($user->email !== 'superadmin@example.com' && $user->id !== auth()->id())
                                     <form action="{{ route('portal.users.destroy', $user->id) }}" method="POST" class="inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?');">
                                         @csrf
                                         @method('DELETE')

@@ -8,14 +8,6 @@
         <p class="text-xs text-[#94A3B8] mt-1">Perbarui informasi nama lengkap, alamat email, atau kata sandi akun yang sedang Anda gunakan.</p>
     </div>
 
-    <!-- Alert Notifications -->
-    @if(session('success'))
-        <div class="p-4 rounded-xl bg-[#10B981]/20 border border-[#10B981]/30 text-[#10B981] text-xs font-bold flex items-center gap-2">
-            <i data-lucide="check-circle" class="w-4 h-4 shrink-0"></i>
-            <span>{{ session('success') }}</span>
-        </div>
-    @endif
-
     @if($errors->any())
         <div class="p-4 rounded-xl bg-[#EF4444]/20 border border-[#EF4444]/30 text-[#EF4444] text-xs font-bold space-y-1">
             <div class="flex items-center gap-2">
