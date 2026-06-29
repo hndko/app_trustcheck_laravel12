@@ -7,12 +7,14 @@ use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\CompanyController;
 use App\Http\Controllers\Frontend\CompareController;
+use App\Http\Controllers\Frontend\HealthController;
 use App\Http\Controllers\Frontend\SearchController;
 use App\Http\Controllers\Frontend\SitemapController;
 use Illuminate\Support\Facades\Route;
 
-// SEO Sitemap Production
+// SEO Sitemap & Health Check Production
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
+Route::get('/up', [HealthController::class, 'index'])->name('health.up');
 
 // Rute Autentikasi Portal Kelola (Netral tanpa nama role)
 Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -27,8 +29,9 @@ Route::get('/search/loading/{id}', [SearchController::class, 'loading'])->name('
 Route::get('/search/status/{id}', [SearchController::class, 'status'])->name('search.status');
 Route::get('/search/result/{id}', [SearchController::class, 'result'])->name('search.result');
 
-// Ekspor PDF Laporan Resmi
+// Ekspor PDF & Koreksi Data Laporan Resmi
 Route::get('/company/{id}/pdf', [CompanyController::class, 'exportPdf'])->name('company.pdf');
+Route::post('/company/{id}/correction', [CompanyController::class, 'storeCorrection'])->name('company.correction');
 
 // Komparasi Reputasi Perusahaan
 Route::get('/compare', [CompareController::class, 'index'])->name('compare.index');

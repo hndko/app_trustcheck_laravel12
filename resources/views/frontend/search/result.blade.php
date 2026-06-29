@@ -1,7 +1,7 @@
 @extends('layouts.app-frontend')
 
 @section('content')
-<div class="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div x-data="{ openCorrectionModal: false }" class="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Top Breadcrumb & Actions -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
@@ -33,6 +33,10 @@
                 <i data-lucide="file-down" class="w-4 h-4"></i>
                 <span>Unduh PDF Resmi</span>
             </a>
+            <button type="button" @click="openCorrectionModal = true" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FEF2F2] border border-[#FECACA] hover:bg-[#FEE2E2] text-xs font-bold text-[#DC2626] shadow-2xs transition-all cursor-pointer">
+                <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                <span>Laporkan Koreksi Data</span>
+            </button>
             <button onclick="window.print()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#D1D5DB] hover:bg-[#F8FAFC] text-xs font-semibold text-[#334155] shadow-2xs transition-all cursor-pointer">
                 <i data-lucide="printer" class="w-4 h-4"></i>
                 <span>Cetak</span>
@@ -382,6 +386,54 @@
                 TrustCheck AI bukan merupakan lembaga penegak hukum, penasihat keuangan, maupun biro investigasi swasta. Seluruh informasi dan Trust Score yang disajikan dihasilkan oleh algoritma kecerdasan buatan dari pengumpulan data publik online secara otomatis pada saat pencarian dilakukan. Karena data diekstraksi secara otomatis dari sumber terbuka publik, ketidakakuratan dapat terjadi jika situs sumber mengalami perubahan. Anda dapat melakukan verifikasi mandiri melalui daftar referensi sumber tautan yang kami sediakan di bagian bawah laporan ini. Kami tidak menjamin keakuratan mutlak 100% dan tidak bertanggung jawab atas kerugian materiil maupun immateriil yang timbul dari keputusan bisnis yang diambil.
             </div>
 
+        </div>
+    </div>
+
+    <!-- Modal Umpan Balik Koreksi Data -->
+    <div x-show="openCorrectionModal" x-cloak class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs">
+        <div @click.away="openCorrectionModal = false" class="bg-white rounded-2xl border border-[#E5E7EB] shadow-xl max-w-lg w-full p-6 sm:p-8 space-y-6 animate-in fade-in zoom-in duration-150">
+            <div class="flex items-center justify-between border-b border-[#F1F5F9] pb-4">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-[#FEF2F2] text-[#DC2626] flex items-center justify-center">
+                        <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base text-[#0F172A]">Laporkan Koreksi Data AI</h3>
+                        <p class="text-xs text-[#64748B]">Bantu kami memperbaiki ketidakakuratan informasi publik.</p>
+                    </div>
+                </div>
+                <button type="button" @click="openCorrectionModal = false" class="text-[#94A3B8] hover:text-[#0F172A] p-1">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <form action="{{ route('company.correction', $company->id) }}" method="POST" class="space-y-4">
+                @csrf
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-[#475569] mb-1.5">Nama Anda (Opsional)</label>
+                    <input type="text" name="reporter_name" class="w-full px-3.5 py-2.5 rounded-xl border border-[#CBD5E1] text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB]" placeholder="Contoh: Budi Santoso">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-[#475569] mb-1.5">Alamat Email (Opsional)</label>
+                    <input type="email" name="reporter_email" class="w-full px-3.5 py-2.5 rounded-xl border border-[#CBD5E1] text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB]" placeholder="budi@example.com">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-[#475569] mb-1.5">Rincian Koreksi Data <span class="text-[#DC2626]">*</span></label>
+                    <textarea name="correction_details" required rows="4" class="w-full px-3.5 py-2.5 rounded-xl border border-[#CBD5E1] text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB]" placeholder="Sebutkan data atau fakta yang kurang akurat beserta sumber valid yang dapat kami verifikasi..."></textarea>
+                </div>
+
+                <div class="flex items-center justify-end gap-3 pt-2">
+                    <button type="button" @click="openCorrectionModal = false" class="px-4 py-2.5 rounded-xl border border-[#CBD5E1] text-xs font-semibold text-[#64748B] hover:bg-[#F8FAFC]">
+                        Batal
+                    </button>
+                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-xs font-bold text-white shadow-sm flex items-center gap-1.5 cursor-pointer">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        <span>Kirim Laporan Koreksi</span>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

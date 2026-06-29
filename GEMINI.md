@@ -91,6 +91,10 @@ Jika terdapat konflik antara kebiasaan umum penulisan kode dengan aturan di bawa
 - **Proteksi Hak Akses & Role Superadmin:**
   - URL pengelolaan sistem wajib bersifat netral tanpa nama role (contoh: `/portal-kelola`). Dilarang menggunakan `/admin` atau menampilkan link kelola di portal publik.
   - Role utama sistem bernama `superadmin`. Menggunakan override `Gate::before` di `AppServiceProvider.php` sehingga `superadmin` selalu memiliki seluruh hak izin (*permission bypass*). Seeder pembuatan akun utama wajib disimpan di `UserSeeder.php` terpisah.
+- **Pemantauan Real-Time & Reliability Production:**
+  - **Notifikasi Darurat API LLM:** Jika pemanggilan model AI mengalami kegagalan, sistem wajib memanggil `report($e)` dan menembakkan notifikasi peringatan darurat ke saluran Telegram (jika variabel `EMERGENCY_TELEGRAM_BOT_TOKEN` dan `EMERGENCY_TELEGRAM_CHAT_ID` dikonfigurasi di `.env`).
+  - **Health Check Endpoint (`/up`):** Tersedia endpoint `/up` berformat JSON via `HealthController` untuk memantau status konektivitas database (PDO) serta waktu latensi respons eksternal AI.
+  - **Umpan Balik Koreksi Data:** Pengguna publik dapat melaporkan ketidakakuratan data melalui form modal interaktif pada halaman laporan. Data disimpan pada tabel `data_corrections` dengan relasi `foreignUuid('company_id')`. Seluruh validasi input form wajib menggunakan pesan Bahasa Indonesia formal.
 
 ### 4. Arsitektur Folder & Asset
 - **Asset Statis:** File CSS kustom, JS, gambar, dan font disimpan di dalam `public/assets/`.

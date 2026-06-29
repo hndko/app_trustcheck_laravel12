@@ -40,6 +40,16 @@ class AiAnalyzer
             return $this->getFallbackAnalysis($companyName);
         } catch (\Exception $e) {
             Log::warning("AiAnalyzer [{$provider}] Error: " . $e->getMessage());
+            report($e);
+
+            // Peringatan darurat real-time ke Telegram jika dikonfigurasi
+            if (!empty(config('services.telegram.bot_token')) && !empty(config('services.telegram.chat_id')) && !app()->runningUnitTests()) {
+                Http::post('https://api.telegram.org/bot' . config('services.telegram.bot_token') . '/sendMessage', [
+                    'chat_id' => config('services.telegram.chat_id'),
+                    'text' => "🚨 [TrustCheck AI Emergency] API LLM Provider ({$provider}) gagal merespons untuk perusahaan {$companyName}. Error: " . $e->getMessage(),
+                ]);
+            }
+
             return $this->getFallbackAnalysis($companyName);
         }
     }

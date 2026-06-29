@@ -40,4 +40,9 @@ return [
         'secret' => env('TURNSTILE_SECRET_KEY'),
     ],
 
+    'telegram' => [
+        'bot_token' => env('EMERGENCY_TELEGRAM_BOT_TOKEN'),
+        'chat_id' => env('EMERGENCY_TELEGRAM_CHAT_ID'),
+    ],
+
 ];
