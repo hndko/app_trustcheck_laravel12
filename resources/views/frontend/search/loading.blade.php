@@ -5,8 +5,7 @@
      x-data="{
         status: '{{ $company->status }}',
         poll() {
-            if (this.status === 'completed') {
-                window.location.href = '{{ route('search.result', $company->id) }}';
+            if (this.status === 'completed' || this.status === 'failed') {
                 return;
             }
             fetch('{{ route('search.status', $company->id) }}')
@@ -22,25 +21,47 @@
      }"
      x-init="setInterval(() => poll(), 2000)">
 
-    <!-- Status Banner -->
-    <div class="bg-white rounded-2xl border border-[#E5E7EB] p-6 mb-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center animate-pulse shrink-0">
-                <i data-lucide="cpu" class="w-6 h-6"></i>
+    <!-- Error Banner (Jika status === 'failed') -->
+    <template x-if="status === 'failed'">
+        <div class="bg-[#FEF2F2] rounded-2xl border border-[#FECACA] p-8 max-w-2xl mx-auto text-center shadow-sm">
+            <div class="w-16 h-16 rounded-2xl bg-[#FEE2E2] text-[#DC2626] flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="alert-triangle" class="w-8 h-8"></i>
             </div>
-            <div>
-                <h2 class="text-lg font-bold text-[#0F172A]">Sedang Mengumpulkan & Menganalisis Data Reputasi...</h2>
-                <p class="text-xs text-[#64748B]">Sistem AI sedang mengekstraksi informasi dari domain resmi, berita online, dan ulasan publik untuk <strong class="text-[#0F172A]">{{ $company->name }}</strong>.</p>
-            </div>
+            <h2 class="text-xl font-extrabold text-[#991B1B] mb-2">Gagal Mengumpulkan Data Reputasi</h2>
+            <p class="text-sm text-[#B91C1C] leading-relaxed mb-6">
+                Terjadi kendala koneksi atau batas waktu pemrosesan saat sistem kecerdasan buatan mencoba mengakses kanal informasi publik untuk <strong class="text-[#7F1D1D]">{{ $company->name }}</strong>. Silakan coba beberapa saat lagi.
+            </p>
+            <form action="{{ route('search.process') }}" method="POST">
+                @csrf
+                <input type="hidden" name="query" value="{{ $company->name }}">
+                <button type="submit" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-sm shadow-sm transition-all cursor-pointer">
+                    <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                    <span>Coba Analisis Ulang</span>
+                </button>
+            </form>
         </div>
-        <div class="px-4 py-2 rounded-lg bg-[#F1F5F9] border border-[#E2E8F0] text-xs font-bold text-[#475569] flex items-center gap-2 shrink-0">
-            <span class="w-2 h-2 rounded-full bg-[#D97706] animate-ping"></span>
-            <span>Status: PROSES KECERDASAN BUATAN</span>
-        </div>
-    </div>
+    </template>
 
-    <!-- Skeleton Loading Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-pulse">
+    <div x-show="status !== 'failed'">
+        <!-- Status Banner -->
+        <div class="bg-white rounded-2xl border border-[#E5E7EB] p-6 mb-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center animate-pulse shrink-0">
+                    <i data-lucide="cpu" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-[#0F172A]">Sedang Mengumpulkan & Menganalisis Data Reputasi...</h2>
+                    <p class="text-xs text-[#64748B]">Sistem AI sedang mengekstraksi informasi dari domain resmi, berita online, dan ulasan publik untuk <strong class="text-[#0F172A]">{{ $company->name }}</strong>.</p>
+                </div>
+            </div>
+            <div class="px-4 py-2 rounded-lg bg-[#F1F5F9] border border-[#E2E8F0] text-xs font-bold text-[#475569] flex items-center gap-2 shrink-0">
+                <span class="w-2 h-2 rounded-full bg-[#D97706] animate-ping"></span>
+                <span>Status: PROSES KECERDASAN BUATAN</span>
+            </div>
+        </div>
+
+        <!-- Skeleton Loading Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-pulse">
         <!-- Sidebar Skeleton -->
         <div class="lg:col-span-1 space-y-6">
             <div class="bg-white rounded-2xl border border-[#E5E7EB] p-6 shadow-sm">
@@ -96,6 +117,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>
 @endsection

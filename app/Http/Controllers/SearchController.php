@@ -48,12 +48,20 @@ class SearchController extends Controller
 
         // Cek apakah perusahaan sudah pernah diproses sebelumnya
         $company = Company::where('slug', $slug)->first();
+        $ttlDays = config('ai.cache_ttl_days', 7);
 
         if ($company) {
-            if ($company->status === 'completed') {
+            if ($company->status === 'completed' && now()->diffInDays($company->updated_at) < $ttlDays) {
                 return redirect()->route('search.result', $company->id);
             }
-            return redirect()->route('search.loading', $company->id);
+            if ($company->status === 'processing') {
+                return redirect()->route('search.loading', $company->id);
+            }
+            
+            // Perbarui status menjadi processing kembali jika data sudah kedaluwarsa (> 7 hari) atau sebelumnya failed
+            $company->update(['status' => 'processing']);
+            ProcessDueDiligenceJob::dispatchSync($company->id, $queryClean);
+            return redirect()->route('search.result', $company->id);
         }
 
         // Buat entitas perusahaan baru berstatus processing

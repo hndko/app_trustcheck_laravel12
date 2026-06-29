@@ -13,9 +13,15 @@
                 <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
                 <span class="text-[#0F172A] font-semibold">{{ $company->name }}</span>
             </div>
-            <h1 class="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
-                {{ $company->name }}
-            </h1>
+            <div class="flex items-center gap-3 mt-2">
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
+                    {{ $company->name }}
+                </h1>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-[11px] font-bold">
+                    <i data-lucide="clock" class="w-3 h-3"></i>
+                    <span>Diperbarui {{ $company->updated_at ? $company->updated_at->diffForHumans() : 'Baru saja' }} (Cache 7 Hari)</span>
+                </span>
+            </div>
         </div>
 
         <div class="flex items-center gap-3">

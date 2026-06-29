@@ -33,19 +33,19 @@ Fase ini berfokus pada fondasi arsitektur modular, database, integrasi AI dasar,
 
 ---
 
-## 🚀 Fase 2: Integrasi Live MCP & Caching Lanjutan (Tahap Berikutnya)
+## 🚀 Fase 2: Integrasi Live MCP & Caching Lanjutan (Selesai ✅)
 
 Fase ini bertujuan untuk menghubungkan adapter pengumpul data ke sumber eksternal waktu nyata (*real-time*).
 
-- [ ] **Integrasi Search Engine API Asli:**
-  - [ ] Menghubungkan `GoogleSearchAdapter` ke layanan Brave Search API / SerpAPI / Tavily MCP.
-  - [ ] Menambahkan validasi batas kuota harian (*rate limiting*) pada API pencarian eksternal.
-- [ ] **Integrasi Web Scraper Worker:**
-  - [ ] Menghubungkan `WebsiteScraperAdapter` dengan Firecrawl MCP atau Playwright untuk ekstraksi metadata WHOIS dan SSL secara langsung.
-  - [ ] Pembersihan dan normalisasi DOM HTML mentah agar bebas iklan dan navigasi sebelum dikirim ke LLM.
-- [ ] **Optimasi Cache & Queue Worker:**
-  - [ ] Konfigurasi masa kadaluarsa hasil pencarian (*Cache TTL*) selama 7 hari agar hemat biaya token API.
-  - [ ] Konfigurasi *failed job handling* pada Laravel Queue jika provider AI mengalami kendala koneksi.
+- [x] **Integrasi Search Engine API Asli:**
+  - [x] Menghubungkan `GoogleSearchAdapter` ke layanan Brave Search API / SerpAPI / Tavily MCP.
+  - [x] Menambahkan validasi batas kuota harian (*rate limiting*) pada API pencarian eksternal.
+- [x] **Integrasi Web Scraper Worker:**
+  - [x] Menghubungkan `WebsiteScraperAdapter` dengan Firecrawl MCP atau Playwright untuk ekstraksi metadata WHOIS dan SSL secara langsung.
+  - [x] Pembersihan dan normalisasi DOM HTML mentah agar bebas iklan dan navigasi sebelum dikirim ke LLM.
+- [x] **Optimasi Cache & Queue Worker:**
+  - [x] Konfigurasi masa kadaluarsa hasil pencarian (*Cache TTL*) selama 7 hari agar hemat biaya token API.
+  - [x] Konfigurasi *failed job handling* pada Laravel Queue jika provider AI mengalami kendala koneksi.
 
 ---
 

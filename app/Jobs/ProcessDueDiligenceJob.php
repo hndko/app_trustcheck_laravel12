@@ -140,4 +140,16 @@ class ProcessDueDiligenceJob implements ShouldQueue
             }
         }
     }
+
+    /**
+    * Handle a job failure.
+    */
+    public function failed(\Throwable $exception): void
+    {
+        Log::error('Queue Job Terminated for ' . $this->companyName . ': ' . $exception->getMessage());
+        $company = Company::find($this->companyId);
+        if ($company) {
+            $company->update(['status' => 'failed']);
+        }
+    }
 }

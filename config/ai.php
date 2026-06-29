@@ -66,4 +66,24 @@ return [
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Live Search & Scraping Providers (Phase 2)
+    |--------------------------------------------------------------------------
+    */
+    'search' => [
+        'provider' => env('SEARCH_PROVIDER', 'tavily'),
+        'tavily_api_key' => env('TAVILY_API_KEY'),
+        'serpapi_api_key' => env('SERPAPI_API_KEY'),
+        'timeout' => 15,
+    ],
+
+    'scraping' => [
+        'firecrawl_api_key' => env('FIRECRAWL_API_KEY'),
+        'jina_reader_url' => 'https://r.jina.ai/',
+        'timeout' => 15,
+    ],
+
+    'cache_ttl_days' => env('CACHE_TTL_DAYS', 7),
+
 ];
