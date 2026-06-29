@@ -86,7 +86,8 @@ Jika terdapat konflik antara kebiasaan umum penulisan kode dengan aturan di bawa
   - Implementasikan sistem *cache* database untuk menyimpan hasil analisis due diligence perusahaan yang sudah diproses dalam kurun waktu tertentu agar menghemat biaya API dan mempercepat waktu respons pencarian serupa.
 - **Keamanan & Validasi Input:**
   - Simpan seluruh API Key dan kredensial sensitif hanya pada file `.env`.
-  - Lakukan sanitasi dan validasi ketat terhadap input pencarian nama perusahaan untuk mencegah *Prompt Injection*, XSS, dan SQL Injection.
+  - Lakukan sanitasi dan validasi ketat terhadap input pencarian nama perusahaan menggunakan regex anti-anomali untuk mencegah *Prompt Injection AI* (seperti instruksi override LLM), XSS, dan SQL Injection.
+  - **Proteksi Anti-Bot & Rate Limiting:** Endpoint pencarian (`POST /search`) wajib dilindungi oleh rate limiter `throttle:search` (maksimal 5 pencarian per menit per IP di luar unit test) serta verifikasi transparan Cloudflare Turnstile jika rahasia dikonfigurasi di environment.
 - **Proteksi Hak Akses & Role Superadmin:**
   - URL pengelolaan sistem wajib bersifat netral tanpa nama role (contoh: `/portal-kelola`). Dilarang menggunakan `/admin` atau menampilkan link kelola di portal publik.
   - Role utama sistem bernama `superadmin`. Menggunakan override `Gate::before` di `AppServiceProvider.php` sehingga `superadmin` selalu memiliki seluruh hak izin (*permission bypass*). Seeder pembuatan akun utama wajib disimpan di `UserSeeder.php` terpisah.

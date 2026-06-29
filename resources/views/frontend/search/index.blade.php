@@ -32,6 +32,12 @@
                 <span>Mulai Analisis</span>
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </button>
+            @if(config('services.turnstile.key'))
+                <div class="w-full mt-3">
+                    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+                    <div class="cf-turnstile" data-sitekey="{{ config('services.turnstile.key') }}"></div>
+                </div>
+            @endif
         </form>
 
         @if($errors->any())

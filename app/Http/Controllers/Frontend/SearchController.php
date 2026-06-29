@@ -32,12 +32,58 @@ class SearchController extends Controller
     public function process(Request $request)
     {
         $request->validate([
-            'query' => 'required|string|min:2|max:100',
+            'query' => [
+                'required',
+                'string',
+                'min:2',
+                'max:100',
+                function ($attribute, $value, $fail) {
+                    // Sanitasi & deteksi anomali Anti-Prompt Injection AI
+                    $suspiciousPatterns = [
+                        '/ignore\s+(all|previous)\s+instructions/i',
+                        '/system\s+prompt/i',
+                        '/you\s+are\s+now/i',
+                        '/bypass/i',
+                        '/do\s+anything\s+now/i',
+                        '/jailbreak/i',
+                        '/as\s+an\s+ai/i',
+                        '/<script>/i',
+                        '/eval\(/i',
+                        '/drop\s+table/i',
+                        '/select\s+.*\s+from/i',
+                    ];
+
+                    foreach ($suspiciousPatterns as $pattern) {
+                        if (preg_match($pattern, $value)) {
+                            $fail('Input nama perusahaan terdeteksi mengandung instruksi manipulatif atau anomali yang tidak sah.');
+                            return;
+                        }
+                    }
+                },
+            ],
         ], [
             'query.required' => 'Nama perusahaan wajib diisi.',
             'query.min' => 'Nama perusahaan minimal terdiri dari 2 karakter.',
             'query.max' => 'Nama perusahaan maksimal 100 karakter.',
         ]);
+
+        // Verifikasi transparan Anti-Bot (Cloudflare Turnstile / reCAPTCHA) jika dikonfigurasi di environment
+        if (!empty(config('services.turnstile.secret')) && !app()->runningUnitTests()) {
+            $turnstileResponse = $request->input('cf-turnstile-response');
+            if (empty($turnstileResponse)) {
+                return back()->withErrors(['query' => 'Verifikasi keamanan Anti-Bot gagal. Silakan muat ulang halaman.']);
+            }
+
+            $verification = \Illuminate\Support\Facades\Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
+                'secret' => config('services.turnstile.secret'),
+                'response' => $turnstileResponse,
+                'remoteip' => $request->ip(),
+            ]);
+
+            if (!$verification->successful() || !($verification->json('success') ?? false)) {
+                return back()->withErrors(['query' => 'Verifikasi Cloudflare Turnstile tidak sah.']);
+            }
+        }
 
         $queryClean = trim(strip_tags($request->input('query')));
         $slug = Str::slug($queryClean);

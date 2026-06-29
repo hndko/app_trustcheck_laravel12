@@ -66,7 +66,7 @@ Fase lanjutan untuk melengkapi kebutuhan pengguna bisnis tingkat tinggi.
 
 ---
 
-## 🛡️ Fase 4: Keamanan & Proteksi Penyalahgunaan (Roadmap Production)
+## 🛡️ Fase 4: Keamanan & Proteksi Penyalahgunaan (Selesai ✅)
 
 Fase persiapan keamanan sistem sebelum diluncurkan ke publik agar tidak rentan serangan bot dan kebocoran kuota LLM.
 
@@ -79,16 +79,16 @@ Fase persiapan keamanan sistem sebelum diluncurkan ke publik agar tidak rentan s
     - [x] Membuat fitur Autentikasi Login (`/login`) untuk pengelola sistem.
 - [x] **FAQ Dinamis Interaktif:**
     - [x] Menampilkan pusat bantuan FAQ di portal utama publik (_Accordion_) yang dapat dikelola (CRUD) secara dinamis melalui `/portal-kelola/faq`.
-- [ ] **Adopsi Standar Ekosistem Laravel 12:**
-    - [ ] Menerapkan standar penulisan _Laravel AI SDK_ (`laravel.com/docs/12.x/ai-sdk`).
-    - [ ] Merencanakan integrasi _Laravel MCP Server_ (`laravel.com/docs/12.x/mcp`) agar agen eksternal dapat mengecek Trust Score secara programatik.
-    - [ ] Merencanakan integrasi _Laravel Boost_ (`laravel.com/docs/12.x/boost`) untuk akselerasi performa tingkat lanjut.
-- [ ] **Pembatasan Kecepatan Pencarian (Rate Limiting):**
-    - [ ] Menerapkan _throttling_ pada endpoint `POST /search` (misalnya maksimal 5 pencarian per menit per IP).
-- [ ] **Integrasi Proteksi Anti-Bot:**
-    - [ ] Menambahkan dukungan verifikasi transparan (Cloudflare Turnstile / reCAPTCHA) pada form pencarian portal utama.
-- [ ] **Sanitasi Anti-Prompt Injection AI:**
-    - [ ] Memperkuat filter input nama perusahaan untuk mendeteksi dan menolak anomali atau instruksi manipulatif terhadap model AI.
+- [x] **Adopsi Standar Ekosistem Laravel 12:**
+    - [x] Menerapkan standar penulisan _Laravel AI SDK_ (`laravel.com/docs/12.x/ai-sdk`) melalui rancangan modular AiAnalyzer dengan dukungan multi-LLM driver.
+    - [x] Merencanakan & merancang integrasi _Laravel MCP Server_ (`laravel.com/docs/12.x/mcp`) agar agen eksternal dapat mengecek Trust Score secara programatik.
+    - [x] Merencanakan & mengadopsi _Laravel Boost_ (`laravel.com/docs/12.x/boost`) untuk akselerasi performa tingkat lanjut.
+- [x] **Pembatasan Kecepatan Pencarian (Rate Limiting):**
+    - [x] Menerapkan _throttling_ pada endpoint `POST /search` (`throttle:search`, maksimal 5 pencarian per menit per IP).
+- [x] **Integrasi Proteksi Anti-Bot:**
+    - [x] Menambahkan dukungan verifikasi transparan Cloudflare Turnstile pada form pencarian portal utama.
+- [x] **Sanitasi Anti-Prompt Injection AI:**
+    - [x] Memperkuat filter input nama perusahaan dengan regex khusus untuk mendeteksi dan menolak anomali atau instruksi manipulatif terhadap model AI.
 
 ---
 
