@@ -1,61 +1,134 @@
-# Konsep Desain Halaman Login & Dasbor (Modern Enterprise UI/UX)
+# DESIGN — Login & Dasbor Portal Kelola TrustCheck AI
 
-Dokumen ini merinci pedoman dan rancangan visual (*design concept*) khusus untuk halaman **Login Autentikasi (`/login`)** dan **Dasbor Analitik (`/portal-kelola`)** pada ekosistem TrustCheck AI. Tujuan utama konsep ini adalah memastikan antarmuka terasa manusiawi, elegan, profesional, dan **tidak terlihat seperti produk template AI konvensional**.
-
----
-
-## 1. Filosofi & Pendekatan Visual ("Anti-AI Stereotype")
-
-Kebanyakan antarmuka yang dihasilkan oleh AI konvensional memiliki ciri khas yang kaku dan klise, seperti penggunaan warna neon ungu/biru gelap bercahaya, ilustrasi robot/sirkuit otak, efek kaca berlebihan (*heavy glassmorphism*), serta animasi berputar yang tidak fungsional. 
-
-Untuk menghindari kesan tersebut, TrustCheck AI mengadopsi standar **Modern SaaS Enterprise** sekelas **Stripe, Linear, Cloudflare, dan GitHub**:
-- **Human-Centric & Trustworthy:** Fokus pada kebersihan tipografi (*high legibility*), proporsi spasi bernapas (*generous whitespace*), dan hierarki visual yang jelas.
-- **Flat & Clean Border:** Batas elemen (*border*) menggunakan garis tipis terdefinisi (`#334155` pada mode gelap) dengan bayangan halus (`shadow-sm` hingga `shadow-md`), menghindari efek blur berlebihan.
-- **Micro-Interactions yang Fungsional:** Respons antarmuka saat kursor melintas (*hover*) atau tombol ditekan transisinya mulus maksimal 150ms–300ms (*ease-in-out*), tanpa efek melompat atau bergetar.
-- **Full Responsiveness (Mobile-First):** Seluruh elemen beradaptasi sempurna dari layar ponsel kecil (320px) hingga layar monitor ekstensif (1440px+).
+Version : 1.0
 
 ---
 
-## 2. Konsep Desain Halaman Login (`/login`)
+# Design Philosophy
 
-Halaman autentikasi dirancang sebagai pintu gerbang profesional yang memberikan ketenangan dan rasa aman bagi admin pengelola.
+Portal Kelola dan Dasbor Analitik TrustCheck AI harus terasa seperti aplikasi bisnis tingkat enterprise yang digunakan oleh pengelola sistem, auditor, dan administrator utama.
 
-### A. Komponen Tata Letak (Layout)
-- **Struktur Dua Kolom (Desktop):**
-  - **Kolom Kiri (Visual Brand Panel - 50% Lebar):** Menampilkan latar belakang gradasi halus biru malam (`#0F172A` ke `#1E293B`) dengan pola geometris grid tipis. Diperkaya dengan *quote* atau pernyataan misi produk yang memperkuat positioning due diligence profesional.
-  - **Kolom Kanan (Form Card - 50% Lebar):** Area formulir masuk yang bersih dengan kontras tinggi sehingga memudahkan fokus pengguna.
-- **Struktur Satu Kolom (Mobile/Tablet):** Kolom kiri disembunyikan secara otomatis, menyisakan formulir masuk di tengah layar (*centered card*) dengan *padding* kompak (`p-6`).
+Tujuan utama adalah memberikan rasa:
+- Trust & Secure
+- Professional
+- Fast & Responsive
+- Clean & Scannable
+- Objective
+- Minimal & High Readability
 
-### B. Spesifikasi Elemen Formulir
-- **Input Field:** Menggunakan sudut membulat sedang (`rounded-xl`), latar belakang input sedikit lebih gelap (`bg-[#0F172A]`) dengan border tipis. Saat fokus (*focus state*), border berubah menjadi biru utama (`#2563EB`) disertai *ring shadow* halus tanpa menggeser posisi layout.
-- **Tombol Masuk (Primary Action):** Berwarna biru solid (`bg-[#2563EB]`) dengan teks putih tebal. Dilengkapi indikator loading interaktif saat diproses (mencegah klik ganda).
-- **Pesan Kesalahan (Error Feedback):** Muncul secara alami di bawah kolom input atau dalam toast alert merah (`bg-[#EF4444]/10 border-[#EF4444]`) dalam Bahasa Indonesia baku yang jelas dan tidak menyalahkan pengguna.
+Jangan sampai tampak seperti:
+- AI Chatbot konvensional
+- Crypto / NFT Dashboard yang berlebihan
+- Dashboard gaming dengan lampu neon bercahaya
+- Glassmorphism UI (kaca buram berlebihan)
+- Animasi melompat atau berputar yang tidak perlu
 
----
-
-## 3. Konsep Desain Dasbor Analitik (`/portal-kelola`)
-
-Dasbor dirancang sebagai pusat kendali operasional yang menyajikan data secara padat, mudah dicerna (*scannable*), dan responsif.
-
-### A. Struktur Navigasi (Responsif Drawer)
-- **Desktop Navigation:** *Sidebar* statis di sisi kiri (`w-64`) yang menampilkan logo brand, tautan modul utama, dan panel status performa AI.
-- **Mobile Navigation:** *Sidebar* disembunyikan secara default dan digantikan oleh **Tombol Hamburger** di *header* atas. Ketika ditekan, navigasi meluncur dari kiri (*off-canvas drawer*) dengan transisi halus didampingi *backdrop overlay* gelap.
-
-### B. Komponen Utama Dasbor
-1. **Top KPI Banner (Kartu Indikator Utama):**
-   - Grid responsif (`grid-cols-1 sm:grid-cols-2 lg:grid-cols-4`) yang merangkum metrik krusial: Total Entitas, Rata-Rata Trust Score, Estimasi Token AI, dan Efisiensi Cache.
-   - Angka ditampilkan dalam ukuran tipografi besar (`text-3xl font-black`) bergaya bersih tanpa grafik speedometer atau *gauge* yang memenuhi layar.
-2. **Distribusi Tingkat Risiko (Risk Breakdown Bar):**
-   - Menggunakan *Progress Bar* vertikal/horizontal bergaya minimalis bergaris tipis untuk membedakan proporsi *Low Risk* (Hijau), *Medium Risk* (Kuning/Oranye), dan *High Risk* (Merah).
-3. **Tabel Log Aktivitas Analisis Terkini:**
-   - Dibungkus dalam kontainer ber-border tipis dengan *overflow-x-auto* agar tabel tidak merusak layout pada layar ponsel.
-   - Status pengerjaan ditampilkan menggunakan *pill badge* lembut (`bg-[color]/20 text-[color] font-bold`) yang elegan.
+Produk harus terasa seperti kombinasi antara:
+- Stripe Dashboard
+- Linear App
+- Cloudflare Enterprise Console
+- GitHub Admin Portal
 
 ---
 
-## 4. Panduan Ekstensi Modul Baru (Contoh: Kelola Provider AI)
+# Design Principles
 
-Ketika menambahkan fitur baru seperti halaman **Kelola Provider AI (`/portal-kelola/providers`)**, konsistensi desain dipertahankan melalui:
-- **Card Switcher Interaktif:** Pemilihan provider utama tidak menggunakan *dropdown* membosankan, melainkan jajaran kartu interaktif (*radio cards*) berikon **Lucide** dengan batas warna dinamis saat aktif.
-- **Tabbed Configuration Area:** Formulir input API Key dan parameter model dikelompokkan dalam tab rapi berbasis Alpine.js, mencegah halaman menjadi terlalu panjang (*scroll fatigue*).
-- **Keamanan Visual:** Kolom sensitif seperti API Key secara default menggunakan tipe `password` dengan penjelasan panduan singkat di bawah input.
+1. **Information First**
+   Data analisis, statistik skor, dan status sistem lebih penting daripada elemen dekoratif.
+2. **Scannable Hierarchy**
+   Metrik utama (KPI) harus langsung terbaca dalam 1 detik pertama menggunakan tipografi tegas.
+3. **Professional Contrast**
+   Menggunakan mode gelap matang (`#0F172A` background, `#1E293B` surface/card) dengan batas garis tipis (`#334155`).
+4. **Zero Layout Shift**
+   Interaksi hover, focus input, dan pembukaan menu tidak boleh menggeser tata letak halaman.
+
+---
+
+# Visual Style & Spesifikasi Teknis
+
+- Style: Modern Enterprise Flat Design
+- Border: `1px solid #334155` (Soft & Defined)
+- Shadow: `shadow-sm` hingga `shadow-md` (Sangat halus)
+- Background Utama: `#0F172A` (Slate 900)
+- Surface / Card: `#1E293B` (Slate 800)
+- Input Background: `#0F172A` dengan border `#334155`
+- Primary Accent: Blue 600 (`#2563EB`), Hover: `#1D4ED8`
+- Text Primary: `#F8FAFC` (Slate 50)
+- Text Secondary: `#94A3B8` (Slate 400)
+- Text Muted: `#64748B` (Slate 500)
+
+---
+
+# Grid & Layout System
+
+## Desktop
+- Sidebar Static Width: `256px` (`w-64`)
+- Content Area: `grow` (Sisa lebar layar)
+- Grid Top KPI: `4 Columns` (`grid-cols-4`)
+
+## Tablet
+- Sidebar: Collapsible / Drawer
+- Grid Top KPI: `2 Columns` (`grid-cols-2`)
+
+## Mobile
+- Sidebar: Off-canvas Drawer (Meluncur dari kiri atas tombol Hamburger)
+- Grid Top KPI: `1 Column` (`grid-cols-1`)
+- Padding Container: `16px` (`p-4`)
+
+---
+
+# Spesifikasi Halaman Login (`/login`)
+
+## Layout
+- Struktur: 2 Kolom pada Desktop (50% Brand Panel Kiri, 50% Form Kanan).
+- Mobile: 1 Kolom berpusat (*Centered Card*), panel kiri disembunyikan otomatis.
+
+## Brand Panel Kiri
+- Latar Belakang: Gradasi `#0F172A` ke `#1E293B` dengan pola dot grid halus (*radial gradient*).
+- Konten: Logo Brand, Quote Misi Enterprise Due Diligence, dan status keamanan aktif.
+
+## Form Card Kanan
+- Batas Card: Border `#334155`, Radius `16px` (`rounded-2xl`).
+- Input Field: Tinggi `48px`, padding horizontal `16px`, fokus border biru `#2563EB`.
+- Tombol Masuk: Solid Blue `#2563EB`, berikon panah kanan, transisi hover halus, dan indikator *loading state* saat proses login.
+
+---
+
+# Spesifikasi Halaman Dasbor Analitik (`/portal-kelola`)
+
+## 1. Header & Navigasi Utama
+- **Desktop Sidebar:**
+  - Menampilkan Logo "TrustCheck Kelola".
+  - Menu Navigasi bersudut membulat (`rounded-xl`), ikon Lucide di kiri.
+  - State Aktif: Latar solid biru `#2563EB`, teks putih tebal.
+  - State Hover: Latar `#334155`, teks putih.
+  - Panel Status AI: Berada di footer sidebar, menampilkan driver LLM aktif secara *real-time*.
+- **Mobile Header:**
+  - Bar atas setinggi `64px` (`h-16`).
+  - **Tombol Hamburger:** Di kiri atas untuk membuka sidebar drawer dengan efek gelap transparan (*backdrop overlay*).
+  - Profil Pengguna ringkas di sudut kanan.
+
+## 2. Top KPI Banner (Kartu Indikator Utama)
+Terdiri dari 4 kartu bersudut `16px` (`rounded-2xl`) dengan border tipis `#334155`:
+1. **Total Entitas Diproses:** Angka besar (`text-3xl font-black`), dilampiri indikator hijau jumlah selesai.
+2. **Rata-Rata Trust Score:** Angka besar berakhiran `/100`, ikon perisai biru/hijau.
+3. **Estimasi Token AI:** Angka format ribuan/jutaan, ikon CPU oranye.
+4. **Efisiensi Cache TTL:** Indikator penghematan kuota API LLM.
+
+Setiap kartu memiliki ikon kecil di sudut kanan atas dalam kotak bersudut `12px` berlatar transparan `20%` warna aksen.
+
+## 3. Distribusi Tingkat Risiko (Risk Breakdown Bar)
+- Judul Section: Tipografi jelas berikon pie-chart.
+- Grid 3 Kolom (Low, Medium, High Risk).
+- Menampilkan persentase proporsional dalam *Progress Bar* bergaris tipis (`h-2 rounded-full`) berlatar `#1E293B`.
+- Warna: Low (`#10B981`), Medium (`#F59E0B`), High (`#EF4444`).
+
+## 4. Log Aktivitas Analisis Terkini (Activity Table)
+- **Container Card:** Latar `#1E293B`, border `#334155`, dengan header pemisah tabel.
+- **Header Tabel:** Latar `#0F172A`, teks `#94A3B8` huruf kapital kecil (`text-xs uppercase font-bold`).
+- **Pill Badges Status:**
+  - Selesai: `bg-[#10B981]/20 text-[#10B981]`
+  - Proses: `bg-[#F59E0B]/20 text-[#FBBF24]`
+  - Gagal: `bg-[#EF4444]/20 text-[#EF4444]`
+- **Risk Level Badges:** Teks tebal bersudut `6px` dengan warna senada tingkat risiko.
+- **Responsivitas Tabel:** Dilengkapi `overflow-x-auto` sehingga dapat digeser horizontal dengan mulus pada ponsel tanpa memotong layar.
