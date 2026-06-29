@@ -59,3 +59,44 @@ Fase lanjutan untuk melengkapi kebutuhan pengguna bisnis tingkat tinggi.
   - [x] Fitur membandingkan 2 atau 3 perusahaan sekaligus dalam satu layar bertabel berdampingan.
 - [x] **Panel Admin & Analitik Penggunaan Token:**
   - [x] Dasbor internal untuk memantau jumlah pencarian harian, rata-rata Trust Score, dan konsumsi token API AI.
+
+---
+
+## 🛡️ Fase 4: Keamanan & Proteksi Penyalahgunaan (Roadmap Production)
+
+Fase persiapan keamanan sistem sebelum diluncurkan ke publik agar tidak rentan serangan bot dan kebocoran kuota LLM.
+
+- [ ] **Proteksi & Autentikasi Area Admin:**
+  - [ ] Membatasi akses rute `/admin` dengan middleware autentikasi / PIN sistem rahasia dari `.env`.
+- [ ] **Pembatasan Kecepatan Pencarian (Rate Limiting):**
+  - [ ] Menerapkan *throttling* pada endpoint `POST /search` (misalnya maksimal 5 pencarian per menit per IP).
+- [ ] **Integrasi Proteksi Anti-Bot:**
+  - [ ] Menambahkan dukungan verifikasi transparan (Cloudflare Turnstile / reCAPTCHA) pada form pencarian portal utama.
+- [ ] **Sanitasi Anti-Prompt Injection AI:**
+  - [ ] Memperkuat filter input nama perusahaan untuk mendeteksi dan menolak anomali atau instruksi manipulatif terhadap model AI.
+
+---
+
+## ⚡ Fase 5: Optimasi Kinerja & SEO Production (Roadmap Production)
+
+Fase peningkatkan kecepatan muat, keandalan antrean latar belakang, dan visibilitas organik di mesin pencari.
+
+- [ ] **Konfigurasi Worker Antrean Production:**
+  - [ ] Menyiapkan pedoman pemrosesan *background job* menggunakan Supervisor atau Laravel Horizon.
+- [ ] **Metadata SEO Dinamis & OpenGraph (OG Tags):**
+  - [ ] Menyematkan meta tag sosial dinamis pada halaman laporan agar menampilkan kartu cuplikan saat dibagikan ke media sosial.
+- [ ] **Generator Sitemap Otomatis (`/sitemap.xml`):**
+  - [ ] Membuat rute sitemap untuk mendaftarkan indeks tautan seluruh perusahaan berstatus `completed` ke Google Search Console.
+
+---
+
+## 📊 Fase 6: Pemantauan Real-Time & Reliability (Roadmap Production)
+
+Fase pemeliharaan jangka panjang untuk mendeteksi *downtime* provider AI dan mengumpulkan umpan balik pengguna.
+
+- [ ] **Notifikasi Error Real-Time:**
+  - [ ] Menghubungkan *Exception Handler* aplikasi ke channel peringatan darurat (Telegram / Sentry) jika API LLM gagal merespons.
+- [ ] **Endpoint Pemantauan Kesehatan (`/up`):**
+  - [ ] Pengecekan otomatis status database dan waktu respons API eksternal.
+- [ ] **Fitur Umpan Balik Koreksi Data:**
+  - [ ] Menambahkan opsi interaktif bagi pengguna publik untuk melaporkan ketidakakuratan data hasil analisis AI.
