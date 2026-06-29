@@ -379,7 +379,7 @@
                     <i data-lucide="info" class="w-4 h-4 text-[#2563EB]"></i>
                     <span>Pernyataan Sanggahan Hukum (Legal Disclaimer):</span>
                 </div>
-                TrustCheck AI bukan merupakan lembaga penegak hukum, penasihat keuangan, maupun biro investigasi swasta. Seluruh informasi dan Trust Score yang disajikan dihasilkan oleh algoritma kecerdasan buatan dari pengumpulan data publik online secara otomatis pada saat pencarian dilakukan. Kami tidak menjamin keakuratan mutlak 100% dan tidak bertanggung jawab atas kerugian materiil maupun immateriil yang timbul dari keputusan bisnis yang diambil berdasarkan laporan ini.
+                TrustCheck AI bukan merupakan lembaga penegak hukum, penasihat keuangan, maupun biro investigasi swasta. Seluruh informasi dan Trust Score yang disajikan dihasilkan oleh algoritma kecerdasan buatan dari pengumpulan data publik online secara otomatis pada saat pencarian dilakukan. Karena data diekstraksi secara otomatis dari sumber terbuka publik, ketidakakuratan dapat terjadi jika situs sumber mengalami perubahan. Anda dapat melakukan verifikasi mandiri melalui daftar referensi sumber tautan yang kami sediakan di bagian bawah laporan ini. Kami tidak menjamin keakuratan mutlak 100% dan tidak bertanggung jawab atas kerugian materiil maupun immateriil yang timbul dari keputusan bisnis yang diambil.
             </div>
 
         </div>

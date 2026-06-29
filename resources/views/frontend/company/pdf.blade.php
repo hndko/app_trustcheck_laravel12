@@ -202,7 +202,7 @@
     @endif
 
     <div class="footer">
-        <strong>Pernyataan Sanggahan Hukum (Disclaimer):</strong> Dokumen ini disajikan oleh TrustCheck AI sebagai agregator informasi publik dan bukan merupakan nasihat hukum, saran investasi, atau rekomendasi kontrak komersial. Data diekstraksi secara otomatis menggunakan teknologi kecerdasan buatan dari berbagai sumber terbuka di internet.
+        <strong>Pernyataan Sanggahan Hukum (Disclaimer):</strong> Dokumen ini disajikan oleh TrustCheck AI sebagai agregator informasi publik dan bukan merupakan nasihat hukum, saran investasi, atau rekomendasi kontrak komersial. Karena data diekstraksi secara otomatis dari sumber terbuka publik, ketidakakuratan dapat terjadi jika situs sumber mengalami perubahan. Anda dapat melakukan verifikasi mandiri melalui daftar referensi sumber tautan yang kami sediakan di bagian laporan.
         <br><br>
         &copy; {{ date('Y') }} TrustCheck AI Enterprise Portal. All Rights Reserved.
     </div>

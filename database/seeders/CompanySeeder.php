@@ -17,6 +17,10 @@ class CompanySeeder extends Seeder
      */
     public function run(): void
     {
+        if (Company::count() > 0) {
+            return;
+        }
+
         // 1. PT Telkom Indonesia (Persero) Tbk
         $telkom = Company::create([
             'name' => 'PT Telkom Indonesia (Persero) Tbk',

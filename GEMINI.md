@@ -52,6 +52,7 @@ Jika terdapat konflik antara kebiasaan umum penulisan kode dengan aturan di bawa
 - **Aturan Bahasa (Wajib):**
   - Seluruh elemen antarmuka yang dibaca oleh pengguna (*user-facing text*), seperti teks halaman web, **alert**, notifikasi *toast*, pesan error, *empty state*, label form, *placeholder*, dan teks *disclaimer* **WAJIB menggunakan Bahasa Indonesia** yang formal, profesional, jelas, dan baku.
   - Untuk struktur file, penamaan variabel, *function/method*, *controller*, *model*, migrasi database, dan komentar kode teknis diperbolehkan dan disarankan menggunakan **Bahasa Inggris** sesuai standar ekosistem Laravel.
+  - **Aturan Disclaimer & Verifikasi Publik:** Seluruh laporan hasil analisis due diligence (web maupun PDF) serta jawaban FAQ wajib mencantumkan kalimat sanggahan standar: *"Karena data diekstraksi secara otomatis dari sumber terbuka publik, ketidakakuratan dapat terjadi jika situs sumber mengalami perubahan. Anda dapat melakukan verifikasi mandiri melalui daftar referensi sumber tautan yang kami sediakan di bagian bawah laporan."*
 - **Integritas Kode:** Lakukan perubahan kode secara terisolasi dan spesifik. Dilarang menghapus fitur, komentar, atau file lain yang tidak terkait langsung dengan instruksi kerja.
 
 ### 2. Aturan UI/UX & Design Philosophy (Mengacu pada `docs/design.md`)
@@ -73,6 +74,7 @@ Jika terdapat konflik antara kebiasaan umum penulisan kode dengan aturan di bawa
   - *Loading State:* Wajib menggunakan **Skeleton Loading** yang rapi memvisualisasikan layout card (bukan *spinner* putar berukuran besar).
   - *Empty State:* Tampilkan ikon sederhana (Lucide Icons), penjelasan singkat dalam Bahasa Indonesia, dan tombol pencarian ulang.
   - *Error State:* Tampilkan dalam card merah berborder tipis dengan ikon alert dan pesan kesalahan yang edukatif dalam Bahasa Indonesia.
+  - *Notification / Alert:* Wajib menggunakan **Global Floating Toast Alert** (berbasis Alpine.js di sudut layar) untuk menampilkan pesan sukses atau error dari sesi balasan controller. Dilarang menggunakan kotak alert statis konvensional di dalam layout halaman.
 
 ### 3. Arsitektur Backend & Keamanan AI
 - **Desain Modular (Adapter Pattern):** Komponen pengumpul data harus dipisahkan menjadi modul terisolasi (`SearchOrchestrator`, `SourceAdapters`, `ContentExtractor`, `AiAnalyzer`, dan `ScoringEngine`). Hal ini memastikan sistem tetap fleksibel jika struktur HTML sumber berubah atau jika API resmi ditambahkan di masa depan.
@@ -91,7 +93,7 @@ Jika terdapat konflik antara kebiasaan umum penulisan kode dengan aturan di bawa
 
 ### 4. Arsitektur Folder & Asset
 - **Asset Statis:** File CSS kustom, JS, gambar, dan font disimpan di dalam `public/assets/`.
-- **Controller:** Berada langsung di `app/Http/Controllers/` tanpa membuat subfolder baru yang tidak perlu, kecuali untuk pemisahan namespace/modul yang terencana matang.
+- **Controller:** Berada di subfolder terstruktur `app/Http/Controllers/Auth/`, `app/Http/Controllers/Frontend/`, dan `app/Http/Controllers/Backend/` agar sejajar dengan pembagian direktori tampilan pada `resources/views/`.
 - **Model:** Berada di `app/Models/`.
 - **Service & Adapter:** Logika pengumpulan data eksternal dan AI disimpan terstruktur di `app/Services/` atau `app/Adapters/`.
 - **View:**
