@@ -1,6 +1,6 @@
 # Roadmap & Task List — TrustCheck AI
 
-Dokumen ini berisi daftar tugas (*task breakdown*) tahap demi tahap dalam pengembangan **TrustCheck AI** dari fase MVP hingga rilis penuh berstandar enterprise.
+Dokumen ini berisi daftar tugas (_task breakdown_) tahap demi tahap dalam pengembangan **TrustCheck AI** dari fase MVP hingga rilis penuh berstandar enterprise.
 
 ---
 
@@ -9,43 +9,47 @@ Dokumen ini berisi daftar tugas (*task breakdown*) tahap demi tahap dalam pengem
 Fase ini berfokus pada fondasi arsitektur modular, database, integrasi AI dasar, dan antarmuka pengguna responsif.
 
 ### 1. Fondasi Database & Struktur Model
+
 - [x] Merancang migrasi tabel `companies` (dengan UUID), `company_metrics`, `company_sources`, `company_news`, dan `search_histories`.
 - [x] Membuat Eloquent Model (`Company`, `CompanyMetric`, `CompanySource`, `CompanyNews`, `SearchHistory`) beserta relasi database.
 - [x] Membuat seeder terpisah `CompanySeeder.php` dengan sampel data nyata perusahaan Indonesia (PT Telkom Indonesia, PT GoTo Gojek Tokopedia) dan riwayat pencarian populer.
 
 ### 2. Layer Adapter & AI Multi-Provider Service
+
 - [x] Membangun antarmuka modular `SourceAdapterInterface`.
 - [x] Menyediakan adapter fallback `GoogleSearchAdapter` dan `WebsiteScraperAdapter`.
 - [x] Membangun `SearchOrchestrator` untuk mengeksekusi pengumpulan data dari berbagai kanal secara berurutan.
 - [x] Membangun `AiAnalyzer` yang mendukung 5 opsi LLM (OpenAI, Gemini, Claude, OpenRouter, Custom Base URL) melalui `config/ai.php` dan `.env`.
-- [x] Membangun `ScoringEngine` untuk menghitung Trust Score (0-100) dan mengkategorikan Risk Level (*Low Risk, Medium Risk, High Risk*).
+- [x] Membangun `ScoringEngine` untuk menghitung Trust Score (0-100) dan mengkategorikan Risk Level (_Low Risk, Medium Risk, High Risk_).
 
 ### 3. Backend Controller & Background Job
+
 - [x] Membuat `ProcessDueDiligenceJob` untuk memproses agregasi data di latar belakang.
-- [x] Membuat `SearchController` dengan sanitasi input pencegahan injeksi, validasi ketat, dan sistem *caching* pencarian.
-- [x] Mendaftarkan rute pencarian dan hasil pada `routes/web.php` dengan konvensi *dot notation*.
+- [x] Membuat `SearchController` dengan sanitasi input pencegahan injeksi, validasi ketat, dan sistem _caching_ pencarian.
+- [x] Mendaftarkan rute pencarian dan hasil pada `routes/web.php` dengan konvensi _dot notation_.
 
 ### 4. Antarmuka Pengguna (Tailwind CSS v4 + Alpine.js)
-- [x] Menyusun layout utama `app-frontend.blade.php` bergaya *Modern Enterprise* dengan font *Plus Jakarta Sans*.
-- [x] Membangun halaman beranda `index.blade.php` dengan *Hero Search Bar* dan daftar pencarian populer.
-- [x] Membangun halaman `loading.blade.php` dengan tampilan *Skeleton Loading* profesional dan AJAX polling otomatis.
+
+- [x] Menyusun layout utama `app-frontend.blade.php` bergaya _Modern Enterprise_ dengan font _Plus Jakarta Sans_.
+- [x] Membangun halaman beranda `index.blade.php` dengan _Hero Search Bar_ dan daftar pencarian populer.
+- [x] Membangun halaman `loading.blade.php` dengan tampilan _Skeleton Loading_ profesional dan AJAX polling otomatis.
 - [x] Membangun laporan lengkap `result.blade.php` meliputi Trust Score besar, badges topik, breakdown skor, kesehatan website, timeline berita, dan transparansi referensi publik.
 
 ---
 
 ## 🚀 Fase 2: Integrasi Live MCP & Caching Lanjutan (Selesai ✅)
 
-Fase ini bertujuan untuk menghubungkan adapter pengumpul data ke sumber eksternal waktu nyata (*real-time*).
+Fase ini bertujuan untuk menghubungkan adapter pengumpul data ke sumber eksternal waktu nyata (_real-time_).
 
 - [x] **Integrasi Search Engine API Asli:**
-  - [x] Menghubungkan `GoogleSearchAdapter` ke layanan Brave Search API / SerpAPI / Tavily MCP.
-  - [x] Menambahkan validasi batas kuota harian (*rate limiting*) pada API pencarian eksternal.
+    - [x] Menghubungkan `GoogleSearchAdapter` ke layanan Brave Search API / SerpAPI / Tavily MCP.
+    - [x] Menambahkan validasi batas kuota harian (_rate limiting_) pada API pencarian eksternal.
 - [x] **Integrasi Web Scraper Worker:**
-  - [x] Menghubungkan `WebsiteScraperAdapter` dengan Firecrawl MCP atau Playwright untuk ekstraksi metadata WHOIS dan SSL secara langsung.
-  - [x] Pembersihan dan normalisasi DOM HTML mentah agar bebas iklan dan navigasi sebelum dikirim ke LLM.
+    - [x] Menghubungkan `WebsiteScraperAdapter` dengan Firecrawl MCP atau Playwright untuk ekstraksi metadata WHOIS dan SSL secara langsung.
+    - [x] Pembersihan dan normalisasi DOM HTML mentah agar bebas iklan dan navigasi sebelum dikirim ke LLM.
 - [x] **Optimasi Cache & Queue Worker:**
-  - [x] Konfigurasi masa kadaluarsa hasil pencarian (*Cache TTL*) selama 7 hari agar hemat biaya token API.
-  - [x] Konfigurasi *failed job handling* pada Laravel Queue jika provider AI mengalami kendala koneksi.
+    - [x] Konfigurasi masa kadaluarsa hasil pencarian (_Cache TTL_) selama 7 hari agar hemat biaya token API.
+    - [x] Konfigurasi _failed job handling_ pada Laravel Queue jika provider AI mengalami kendala koneksi.
 
 ---
 
@@ -54,11 +58,11 @@ Fase ini bertujuan untuk menghubungkan adapter pengumpul data ke sumber eksterna
 Fase lanjutan untuk melengkapi kebutuhan pengguna bisnis tingkat tinggi.
 
 - [x] **Ekspor Laporan Resmi (PDF Generation):**
-  - [x] Menambahkan tombol unduh laporan due diligence berformat PDF dengan kop surat resmi TrustCheck AI.
+    - [x] Menambahkan tombol unduh laporan due diligence berformat PDF dengan kop surat resmi TrustCheck AI.
 - [x] **Komparasi Reputasi Perusahaan (Company Comparison):**
-  - [x] Fitur membandingkan 2 atau 3 perusahaan sekaligus dalam satu layar bertabel berdampingan.
+    - [x] Fitur membandingkan 2 atau 3 perusahaan sekaligus dalam satu layar bertabel berdampingan.
 - [x] **Panel Admin & Analitik Penggunaan Token:**
-  - [x] Dasbor internal untuk memantau jumlah pencarian harian, rata-rata Trust Score, dan konsumsi token API AI.
+    - [x] Dasbor internal untuk memantau jumlah pencarian harian, rata-rata Trust Score, dan konsumsi token API AI.
 
 ---
 
@@ -66,15 +70,25 @@ Fase lanjutan untuk melengkapi kebutuhan pengguna bisnis tingkat tinggi.
 
 Fase persiapan keamanan sistem sebelum diluncurkan ke publik agar tidak rentan serangan bot dan kebocoran kuota LLM.
 
-- [ ] **Proteksi Rute dengan Permission & Logging Aktivitas:**
-  - [ ] Menginstal dan mengonfigurasi `spatie/laravel-permission` untuk proteksi rute berbasis izin spesifik (*permission-based*, tanpa mengandalkan *role*).
-  - [ ] Menginstal `spatie/laravel-activitylog` untuk mencatat riwayat pencarian dan aktivitas analitik due diligence AI.
+- [x] **Proteksi Rute dengan Permission & Logging Aktivitas:**
+    - [x] Menginstal dan mengonfigurasi `spatie/laravel-permission` untuk proteksi rute berbasis izin spesifik (_permission-based_, tanpa mengandalkan _role_).
+    - [x] Menginstal `spatie/laravel-activitylog` untuk mencatat riwayat pencarian dan aktivitas analitik due diligence AI.
+- [x] **Halaman Login & URL Netral Tanpa Nama Role:**
+    - [x] Menghapus tombol link dasbor dari portal publik.
+    - [x] Mengubah rute dasbor kelola dari `/admin` menjadi URL netral `/portal-kelola` yang dilindungi _middleware permission_ Spatie (`permission:access_portal_kelola`).
+    - [x] Membuat fitur Autentikasi Login (`/login`) untuk pengelola sistem.
+- [x] **FAQ Dinamis Interaktif:**
+    - [x] Menampilkan pusat bantuan FAQ di portal utama publik (_Accordion_) yang dapat dikelola (CRUD) secara dinamis melalui `/portal-kelola/faq`.
+- [ ] **Adopsi Standar Ekosistem Laravel 12:**
+    - [ ] Menerapkan standar penulisan _Laravel AI SDK_ (`laravel.com/docs/12.x/ai-sdk`).
+    - [ ] Merencanakan integrasi _Laravel MCP Server_ (`laravel.com/docs/12.x/mcp`) agar agen eksternal dapat mengecek Trust Score secara programatik.
+    - [ ] Merencanakan integrasi _Laravel Boost_ (`laravel.com/docs/12.x/boost`) untuk akselerasi performa tingkat lanjut.
 - [ ] **Pembatasan Kecepatan Pencarian (Rate Limiting):**
-  - [ ] Menerapkan *throttling* pada endpoint `POST /search` (misalnya maksimal 5 pencarian per menit per IP).
+    - [ ] Menerapkan _throttling_ pada endpoint `POST /search` (misalnya maksimal 5 pencarian per menit per IP).
 - [ ] **Integrasi Proteksi Anti-Bot:**
-  - [ ] Menambahkan dukungan verifikasi transparan (Cloudflare Turnstile / reCAPTCHA) pada form pencarian portal utama.
+    - [ ] Menambahkan dukungan verifikasi transparan (Cloudflare Turnstile / reCAPTCHA) pada form pencarian portal utama.
 - [ ] **Sanitasi Anti-Prompt Injection AI:**
-  - [ ] Memperkuat filter input nama perusahaan untuk mendeteksi dan menolak anomali atau instruksi manipulatif terhadap model AI.
+    - [ ] Memperkuat filter input nama perusahaan untuk mendeteksi dan menolak anomali atau instruksi manipulatif terhadap model AI.
 
 ---
 
@@ -83,21 +97,21 @@ Fase persiapan keamanan sistem sebelum diluncurkan ke publik agar tidak rentan s
 Fase peningkatkan kecepatan muat, keandalan antrean latar belakang, dan visibilitas organik di mesin pencari.
 
 - [ ] **Konfigurasi Worker Antrean Production:**
-  - [ ] Menyiapkan pedoman pemrosesan *background job* menggunakan Supervisor atau Laravel Horizon.
+    - [ ] Menyiapkan pedoman pemrosesan _background job_ menggunakan Supervisor atau Laravel Horizon.
 - [ ] **Metadata SEO Dinamis & OpenGraph (OG Tags):**
-  - [ ] Menyematkan meta tag sosial dinamis pada halaman laporan agar menampilkan kartu cuplikan saat dibagikan ke media sosial.
+    - [ ] Menyematkan meta tag sosial dinamis pada halaman laporan agar menampilkan kartu cuplikan saat dibagikan ke media sosial.
 - [ ] **Generator Sitemap Otomatis (`/sitemap.xml`):**
-  - [ ] Membuat rute sitemap untuk mendaftarkan indeks tautan seluruh perusahaan berstatus `completed` ke Google Search Console.
+    - [ ] Membuat rute sitemap untuk mendaftarkan indeks tautan seluruh perusahaan berstatus `completed` ke Google Search Console.
 
 ---
 
 ## 📊 Fase 6: Pemantauan Real-Time & Reliability (Roadmap Production)
 
-Fase pemeliharaan jangka panjang untuk mendeteksi *downtime* provider AI dan mengumpulkan umpan balik pengguna.
+Fase pemeliharaan jangka panjang untuk mendeteksi _downtime_ provider AI dan mengumpulkan umpan balik pengguna.
 
 - [ ] **Notifikasi Error Real-Time:**
-  - [ ] Menghubungkan *Exception Handler* aplikasi ke channel peringatan darurat (Telegram / Sentry) jika API LLM gagal merespons.
+    - [ ] Menghubungkan _Exception Handler_ aplikasi ke channel peringatan darurat (Telegram / Sentry) jika API LLM gagal merespons.
 - [ ] **Endpoint Pemantauan Kesehatan (`/up`):**
-  - [ ] Pengecekan otomatis status database dan waktu respons API eksternal.
+    - [ ] Pengecekan otomatis status database dan waktu respons API eksternal.
 - [ ] **Fitur Umpan Balik Koreksi Data:**
-  - [ ] Menambahkan opsi interaktif bagi pengguna publik untuk melaporkan ketidakakuratan data hasil analisis AI.
+    - [ ] Menambahkan opsi interaktif bagi pengguna publik untuk melaporkan ketidakakuratan data hasil analisis AI.

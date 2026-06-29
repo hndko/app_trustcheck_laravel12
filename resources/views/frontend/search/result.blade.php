@@ -25,6 +25,10 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-3">
+            <a href="{{ route('compare.index', ['companies' => $company->id]) }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] hover:bg-[#F1F5F9] text-xs font-bold text-[#0F172A] shadow-2xs transition-all">
+                <i data-lucide="git-compare" class="w-4 h-4 text-[#2563EB]"></i>
+                <span>Bandingkan Entitas Ini</span>
+            </a>
             <a href="{{ route('company.pdf', $company->id) }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#EFF6FF] border border-[#BFDBFE] hover:bg-[#DBEAFE] text-xs font-bold text-[#1D4ED8] shadow-2xs transition-all">
                 <i data-lucide="file-down" class="w-4 h-4"></i>
                 <span>Unduh PDF Resmi</span>

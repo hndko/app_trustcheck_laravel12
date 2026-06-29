@@ -19,27 +19,38 @@
     <!-- Sidebar Navigation -->
     <aside class="w-64 bg-[#1E293B] border-r border-[#334155] flex flex-col shrink-0">
         <div class="h-16 flex items-center px-6 border-b border-[#334155]">
-            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2.5 font-extrabold text-lg tracking-tight text-white">
+            <a href="{{ route('portal.dashboard') }}" class="flex items-center gap-2.5 font-extrabold text-lg tracking-tight text-white">
                 <div class="w-8 h-8 rounded-lg bg-[#2563EB] flex items-center justify-center text-white shrink-0">
                     <i data-lucide="shield-alert" class="w-4 h-4"></i>
                 </div>
-                <span>TrustCheck <span class="text-[#38BDF8]">Admin</span></span>
+                <span>TrustCheck <span class="text-[#38BDF8]">Kelola</span></span>
             </a>
         </div>
 
         <nav class="p-4 space-y-1 grow">
-            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#2563EB] text-white font-bold text-sm shadow-sm transition-all">
+            <a href="{{ route('portal.dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('portal.dashboard') ? 'bg-[#2563EB] text-white font-bold shadow-sm' : 'text-[#94A3B8] hover:bg-[#334155] hover:text-white font-semibold' }} text-sm transition-all">
                 <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
                 <span>Dasbor Analitik</span>
             </a>
-            <a href="{{ route('search.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#94A3B8] hover:bg-[#334155] hover:text-white font-semibold text-sm transition-all">
-                <i data-lucide="external-link" class="w-5 h-5"></i>
-                <span>Kembali ke Portal Publik</span>
+            <a href="{{ route('portal.faq.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('portal.faq.*') ? 'bg-[#2563EB] text-white font-bold shadow-sm' : 'text-[#94A3B8] hover:bg-[#334155] hover:text-white font-semibold' }} text-sm transition-all">
+                <i data-lucide="help-circle" class="w-5 h-5"></i>
+                <span>Kelola FAQ Publik</span>
             </a>
-            <a href="{{ route('compare.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#94A3B8] hover:bg-[#334155] hover:text-white font-semibold text-sm transition-all">
+            <a href="{{ route('search.index') }}" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#94A3B8] hover:bg-[#334155] hover:text-white font-semibold text-sm transition-all">
+                <i data-lucide="external-link" class="w-5 h-5"></i>
+                <span>Portal Publik</span>
+            </a>
+            <a href="{{ route('compare.index') }}" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#94A3B8] hover:bg-[#334155] hover:text-white font-semibold text-sm transition-all">
                 <i data-lucide="git-compare" class="w-5 h-5"></i>
                 <span>Matriks Komparasi</span>
             </a>
+            <form action="{{ route('auth.logout') }}" method="POST" class="pt-4 mt-4 border-t border-[#334155]">
+                @csrf
+                <button type="submit" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-[#EF4444] hover:bg-[#EF4444]/10 font-bold text-sm transition-all cursor-pointer">
+                    <i data-lucide="log-out" class="w-5 h-5"></i>
+                    <span>Keluar Sistem</span>
+                </button>
+            </form>
         </nav>
 
         <!-- System Configuration Status Panel -->

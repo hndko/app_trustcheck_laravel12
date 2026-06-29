@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jobs\ProcessDueDiligenceJob;
 use App\Models\Company;
+use App\Models\Faq;
 use App\Models\SearchHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -18,6 +19,7 @@ class SearchController extends Controller
         $data = [
             'title' => 'TrustCheck AI — Cari Reputasi Perusahaan',
             'popularSearches' => SearchHistory::orderByDesc('search_count')->take(6)->get(),
+            'faqs' => Faq::where('is_active', true)->orderBy('order')->get(),
         ];
 
         return view('frontend.search.index', $data);

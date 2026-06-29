@@ -96,5 +96,49 @@
             </p>
         </div>
     </div>
+
+    <!-- Comparison Call to Action Banner -->
+    <div class="bg-linear-to-r from-[#1E293B] to-[#0F172A] rounded-2xl p-6 sm:p-8 text-white shadow-md flex flex-col sm:flex-row items-center justify-between gap-6 border border-[#334155]">
+        <div class="space-y-2 text-center sm:text-left">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2563EB]/20 border border-[#2563EB]/40 text-[#38BDF8] text-xs font-bold">
+                <i data-lucide="git-compare" class="w-3.5 h-3.5"></i>
+                <span>Fitur Unggulan</span>
+            </div>
+            <h3 class="text-xl font-extrabold tracking-tight">Ingin Membandingkan Reputasi Beberapa Perusahaan?</h3>
+            <p class="text-xs text-[#94A3B8] max-w-xl">
+                Bandingkan hingga 3 entitas perusahaan secara berdampingan untuk melihat perbandingan Trust Score, tingkat risiko, sentimen publik, dan fakta ulasan sebelum Anda mengambil keputusan bisnis.
+            </p>
+        </div>
+        <a href="{{ route('compare.index') }}" class="px-6 py-3.5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-extrabold text-sm shadow-sm transition-all shrink-0 flex items-center gap-2 cursor-pointer">
+            <span>Buka Matriks Komparasi</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+    </div>
+
+    <!-- Dynamic FAQ Accordion Section -->
+    <div class="pt-8 border-t border-[#E5E7EB] space-y-6" x-data="{ activeAccordion: null }">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+            <h2 class="text-2xl font-extrabold text-[#0F172A] tracking-tight">Pertanyaan Umum (FAQ)</h2>
+            <p class="text-xs text-[#64748B]">Temukan jawaban mengenai cara kerja, metodologi perhitungan skor, dan kebijakan objektivitas TrustCheck AI.</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-3">
+            @forelse($faqs as $faq)
+                <div class="bg-white rounded-2xl border border-[#E5E7EB] shadow-sm overflow-hidden transition-all">
+                    <button type="button" 
+                        @click="activeAccordion = activeAccordion === {{ $faq->id }} ? null : {{ $faq->id }}" 
+                        class="w-full p-5 text-left font-bold text-sm text-[#0F172A] flex items-center justify-between gap-4 hover:bg-[#F8FAFC] transition-colors cursor-pointer">
+                        <span>{{ $faq->question }}</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-[#64748B] shrink-0 transition-transform duration-200" :class="{ 'rotate-180': activeAccordion === {{ $faq->id }} }"></i>
+                    </button>
+                    <div x-show="activeAccordion === {{ $faq->id }}" x-collapse x-cloak class="px-5 pb-5 pt-1 text-xs text-[#475569] leading-relaxed border-t border-[#F1F5F9] bg-[#F8FAFC]/50">
+                        {{ $faq->answer }}
+                    </div>
+                </div>
+            @empty
+                <div class="text-center py-6 text-xs text-[#94A3B8]">Belum ada data pertanyaan umum.</div>
+            @endforelse
+        </div>
+    </div>
 </div>
 @endsection

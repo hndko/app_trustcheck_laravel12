@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Company;
+use App\Models\User;
+use Spatie\Permission\Models\Permission;
 
 it('renders comparison matrix page successfully', function () {
     $company1 = Company::create([
@@ -26,8 +28,18 @@ it('renders comparison matrix page successfully', function () {
     $response->assertSee('Matriks Perbandingan');
 });
 
-it('renders admin panel dashboard successfully', function () {
-    $response = $this->get('/admin');
+it('redirects unauthenticated user from portal kelola to login', function () {
+    $response = $this->get('/portal-kelola');
+    $response->assertStatus(302);
+    $response->assertRedirect('/login');
+});
+
+it('renders portal kelola dashboard successfully for authorized user', function () {
+    $permission = Permission::firstOrCreate(['name' => 'access_portal_kelola']);
+    $user = User::factory()->create();
+    $user->givePermissionTo($permission);
+
+    $response = $this->actingAs($user)->get('/portal-kelola');
     $response->assertStatus(200);
     $response->assertSee('Dasbor Analitik');
     $response->assertSee('Total Entitas Diproses');
@@ -46,4 +58,14 @@ it('downloads official due diligence pdf report', function () {
     $response = $this->get('/company/' . $company->id . '/pdf');
     $response->assertStatus(200);
     $response->assertHeader('content-type', 'application/pdf');
+});
+
+it('allows authorized user to manage public faqs', function () {
+    $permission = Permission::firstOrCreate(['name' => 'access_portal_kelola']);
+    $user = User::factory()->create();
+    $user->givePermissionTo($permission);
+
+    $response = $this->actingAs($user)->get('/portal-kelola/faq');
+    $response->assertStatus(200);
+    $response->assertSee('Kelola Pertanyaan Umum (FAQ)');
 });

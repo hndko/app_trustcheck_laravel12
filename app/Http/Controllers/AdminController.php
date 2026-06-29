@@ -28,7 +28,7 @@ class AdminController extends Controller
         $popularSearches = SearchHistory::orderByDesc('search_count')->take(6)->get();
 
         $data = [
-            'title' => 'Dasbor Analitik & Monitoring — TrustCheck AI Admin',
+            'title' => 'Dasbor Analitik & Monitoring — TrustCheck Kelola',
             'totalCompanies' => $totalCompanies,
             'completedCount' => $completedCount,
             'averageScore' => round($averageScore, 1),
