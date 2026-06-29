@@ -694,9 +694,15 @@ mengambil keputusan.
 
 # 15. Teknologi
 
-## Backend
+## Backend & Audit Security
 
-Laravel 12
+Laravel 12 (PHP 8.2+)
+
+Spatie Permission (Proteksi hak akses berbasis izin dengan *bypass all* untuk role `superadmin`)
+
+Spatie Activitylog (Pencatatan riwayat audit dan penelusuran *due diligence*)
+
+DOMPDF (Ekspor dokumen laporan resmi PDF)
 
 ---
 
@@ -712,23 +718,27 @@ AlpineJS
 
 ## Database
 
-MariaDB
+MariaDB / MySQL
 
 ---
 
 ## Queue
 
-Laravel Queue
+Laravel Queue (Pemrosesan latar belakang asinkron)
 
 ---
 
-## AI
+## AI Providers (Fleksibel)
 
-OpenAI
+OpenAI (GPT-4o)
 
-Gemini
+Google Gemini (Gemini 2.5 Flash)
 
-Claude (opsional)
+Anthropic Claude (Sonnet 3.5)
+
+OpenRouter (Multi-model gateway)
+
+Custom Base URL (Ollama / Local LLM)
 
 ---
 

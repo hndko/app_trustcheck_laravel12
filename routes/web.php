@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompareController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\PortalController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Rute Autentikasi Portal Kelola (Netral tanpa nama role)
@@ -29,6 +31,11 @@ Route::get('/compare', [CompareController::class, 'index'])->name('compare.index
 
 // Portal Kelola Sistem & Analitik Internal (Dilindungi Auth & Middleware Permission Spatie)
 Route::middleware(['auth', 'permission:access_portal_kelola'])->prefix('portal-kelola')->group(function () {
-    Route::get('/', [AdminController::class, 'dashboard'])->name('portal.dashboard');
+    Route::get('/', [PortalController::class, 'dashboard'])->name('portal.dashboard');
     Route::resource('faq', FaqController::class)->names('portal.faq');
+    
+    // Manajemen Pengguna & Profil (Dilindungi izin manage_users atau bypass superadmin)
+    Route::resource('users', UserController::class)->names('portal.users');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('portal.profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('portal.profile.update');
 });

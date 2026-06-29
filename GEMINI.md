@@ -85,6 +85,9 @@ Jika terdapat konflik antara kebiasaan umum penulisan kode dengan aturan di bawa
 - **Keamanan & Validasi Input:**
   - Simpan seluruh API Key dan kredensial sensitif hanya pada file `.env`.
   - Lakukan sanitasi dan validasi ketat terhadap input pencarian nama perusahaan untuk mencegah *Prompt Injection*, XSS, dan SQL Injection.
+- **Proteksi Hak Akses & Role Superadmin:**
+  - URL pengelolaan sistem wajib bersifat netral tanpa nama role (contoh: `/portal-kelola`). Dilarang menggunakan `/admin` atau menampilkan link kelola di portal publik.
+  - Role utama sistem bernama `superadmin`. Menggunakan override `Gate::before` di `AppServiceProvider.php` sehingga `superadmin` selalu memiliki seluruh hak izin (*permission bypass*). Seeder pembuatan akun utama wajib disimpan di `UserSeeder.php` terpisah.
 
 ### 4. Arsitektur Folder & Asset
 - **Asset Statis:** File CSS kustom, JS, gambar, dan font disimpan di dalam `public/assets/`.
@@ -102,7 +105,7 @@ Jika terdapat konflik antara kebiasaan umum penulisan kode dengan aturan di bawa
 | Layout | File Path | Penggunaan |
 | :--- | :--- | :--- |
 | **Frontend** | `resources/views/layouts/app-frontend.blade.php` | Halaman portal pencarian utama dan halaman hasil analisis due diligence |
-| **Backend / Admin** | `resources/views/layouts/app-backend.blade.php` | Halaman kelola sistem internal (jika ada panel admin/konfigurasi) |
+| **Backend / Kelola** | `resources/views/layouts/app-backend.blade.php` | Halaman portal kelola sistem internal (`/portal-kelola`) |
 
 ### 6. Konvensi Layout & Blade
 - **Pembatasan Yield:** Layout utama hanya boleh menyediakan satu `@yield('content')` sebagai slot area konten utama.

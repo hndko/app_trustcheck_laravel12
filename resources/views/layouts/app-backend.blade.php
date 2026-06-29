@@ -36,6 +36,14 @@
                 <i data-lucide="help-circle" class="w-5 h-5"></i>
                 <span>Kelola FAQ Publik</span>
             </a>
+            <a href="{{ route('portal.users.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('portal.users.*') ? 'bg-[#2563EB] text-white font-bold shadow-sm' : 'text-[#94A3B8] hover:bg-[#334155] hover:text-white font-semibold' }} text-sm transition-all">
+                <i data-lucide="users" class="w-5 h-5"></i>
+                <span>Kelola Pengguna</span>
+            </a>
+            <a href="{{ route('portal.profile.edit') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('portal.profile.*') ? 'bg-[#2563EB] text-white font-bold shadow-sm' : 'text-[#94A3B8] hover:bg-[#334155] hover:text-white font-semibold' }} text-sm transition-all">
+                <i data-lucide="user-check" class="w-5 h-5"></i>
+                <span>Pengaturan Profil</span>
+            </a>
             <a href="{{ route('search.index') }}" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#94A3B8] hover:bg-[#334155] hover:text-white font-semibold text-sm transition-all">
                 <i data-lucide="external-link" class="w-5 h-5"></i>
                 <span>Portal Publik</span>

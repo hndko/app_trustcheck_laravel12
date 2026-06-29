@@ -6,7 +6,7 @@ use App\Models\Company;
 use App\Models\SearchHistory;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class PortalController extends Controller
 {
     /**
      * Tampilkan dasbor analitik internal dan penggunaan token AI.

@@ -3,6 +3,7 @@
 use App\Models\Company;
 use App\Models\User;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 it('renders comparison matrix page successfully', function () {
     $company1 = Company::create([
@@ -68,4 +69,24 @@ it('allows authorized user to manage public faqs', function () {
     $response = $this->actingAs($user)->get('/portal-kelola/faq');
     $response->assertStatus(200);
     $response->assertSee('Kelola Pertanyaan Umum (FAQ)');
+});
+
+it('allows superadmin to access users management without specific permission', function () {
+    $role = Role::firstOrCreate(['name' => 'superadmin']);
+    $user = User::factory()->create();
+    $user->assignRole($role);
+
+    $response = $this->actingAs($user)->get('/portal-kelola/users');
+    $response->assertStatus(200);
+    $response->assertSee('Kelola Pengguna Sistem');
+});
+
+it('allows user to access edit profile page', function () {
+    $permission = Permission::firstOrCreate(['name' => 'access_portal_kelola']);
+    $user = User::factory()->create();
+    $user->givePermissionTo($permission);
+
+    $response = $this->actingAs($user)->get('/portal-kelola/profile');
+    $response->assertStatus(200);
+    $response->assertSee('Pengaturan Profil Saya');
 });
