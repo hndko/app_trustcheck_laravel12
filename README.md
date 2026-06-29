@@ -1,59 +1,184 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+# 🛡️ TrustCheck AI
+### *AI-Powered Company Reputation & Due Diligence Search Engine*
+
+[![Laravel Version](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP Version](https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![Alpine.js](https://img.shields.io/badge/Alpine.js-Lightweight-8BC0D0?style=for-the-badge&logo=alpine.js&logoColor=white)](https://alpinejs.dev)
+[![Database](https://img.shields.io/badge/MySQL_%2F_MariaDB-Enterprise-005C84?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](https://opensource.org/licenses/MIT)
+
+<p class="mt-4 text-slate-600 text-sm">
+Mesin pencari intelijensi bisnis berbasis Kecerdasan Buatan (AI) yang mengagregasi, membersihkan, dan menyintesis informasi publik secara otomatis untuk verifikasi reputasi dan mitigasi risiko sebelum pengambilan keputusan bisnis.
 </p>
 
-## About Laravel
+[Fitur Utama](#-fitur-unggulan-portfolio-highlights) • [Arsitektur Sistem](#-arsitektur--teknologi) • [Dokumentasi Resmi](#-dokumentasi-resmi) • [Panduan Instalasi](#-panduan-instalasi--penggunaan) • [Lisensi](#-lisensi--disclaimer)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+</div>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📌 Deskripsi Singkat GitHub (*Short Description*)
+> Gunakan teks di bawah ini untuk kolom **About / Description** pada repository GitHub Anda:
+```text
+🔍 AI-Powered Company Reputation & Due Diligence Search Engine. Mesin pencari intelijensi bisnis berbasis AI untuk verifikasi reputasi, analisis risiko (Trust Score), komparasi entitas, dan ekstraksi fakta publik secara real-time. Built with Laravel 12 & Tailwind CSS v4.
+```
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## ✨ Fitur Unggulan (*Portfolio Highlights*)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+TrustCheck AI dirancang dengan filosofi **Modern Enterprise** yang mengutamakan kecepatan, objektivitas data, dan antarmuka bisnis kelas atas (*Clean & Minimalist*).
 
-## Laravel Sponsors
+### 🔎 1. Mesin Pencari & Agregator Intelijensi Publik
+- **Real-Time Data Collection:** Menarik informasi publik dari situs resmi perusahaan, portal berita online, data WHOIS domain, dan rekam jejak digital secara otomatis.
+- **Tanpa Login Wajib:** Pengguna dapat langsung melakukan pencarian entitas bisnis secara cepat tanpa hambatan pendaftaran akun (*frictionless UI*).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 🤖 2. Analisis AI Objektif & Multi-LLM Driver
+- **Sintesis Fakta Bebas Opini:** AI dilarang keras membuat opini subjektif atau menghakimi. Laporan difokuskan murni pada fakta publik yang dapat diverifikasi (*Neutral Diction*).
+- **Fleksibilitas Provider AI:** Mendukung arsitektur *adapter pattern* yang dapat diganti sewaktu-waktu melalui `.env`: **OpenAI**, **Google Gemini**, **Anthropic Claude**, **OpenRouter**, hingga **Custom LLM Base URL**.
 
-### Premium Partners
+### 📊 3. Skor Kepercayaan (*Trust Score*) & Tingkat Risiko
+- Mengkalkulasi **Trust Score (0 - 100)** berdasarkan bobot indikator multi-dimensi:
+  - 🌐 **Situs Web & Keamanan SSL** (10%)
+  - 🔍 **Umur & Reputasi Domain** (10%)
+  - 🗣️ **Sentimen & Ulasan Publik** (25%)
+  - 📰 **Rekam Jejak Berita Media** (20%)
+  - 🏢 **Kelengkapan Profil Perusahaan** (15%)
+  - 📈 **Jejak Digital & Transparansi** (10%)
+  - 🧠 **Tingkat Keyakinan AI (*Confidence*)** (10%)
+- Dilengkapi klasifikasi **Risk Level** otomatis: *Risiko Rendah (Aman)*, *Risiko Sedang (Perhatian)*, dan *Risiko Tinggi (Waspada)*.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### ⚖️ 4. Matriks Komparasi Reputasi Perusahaan
+- Memungkinkan pengguna membandingkan metrik reputasi, sentimen publik, dan parameter teknis dari beberapa perusahaan sekaligus berdampingan dalam satu layar visual yang interaktif.
 
-## Contributing
+### 📄 5. Ekspor Laporan PDF Kop Resmi Enterprise
+- Menghasilkan dokumen laporan *Due Diligence* berformat PDF siap saji (*investor & executive ready*) dengan tata letak profesional untuk lampiran kontrak atau rapat bisnis.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 🛡️ 6. Keamanan & Proteksi Tingkat Lanjut
+- **Anti-Prompt Injection AI:** Regex sanitasi khusus untuk mencegah serangan manipulasi instruksi LLM dari input pencarian.
+- **Proteksi Anti-Bot & Rate Limiting:** Pembatasan ketat (`throttle:search`) serta dukungan verifikasi transparan **Cloudflare Turnstile**.
+- **Role Superadmin & Portal Netral:** URL kelola sistem aman tanpa nama role standar (contoh: `/portal-kelola`) dengan proteksi *permission bypass*.
 
-## Code of Conduct
+### ⚡ 7. Pemantauan Real-Time & Reliabilitas Production
+- **Endpoint Monitoring (`/up`):** Health check otomatis berformat JSON untuk memantau status konektivitas database PDO dan latensi respons AI.
+- **Notifikasi Darurat Telegram:** Integrasi pelaporan error otomatis ke saluran Telegram jika terjadi gangguan pada provider AI eksternal.
+- **Umpan Balik Koreksi Data:** Portal pelaporan transparan bagi publik untuk mengoreksi ketidakakuratan data hasil ekstraksi AI.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 🛠 Arsitektur & Teknologi
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+| Komponen | Teknologi yang Digunakan | Keterangan |
+| :--- | :--- | :--- |
+| **Backend Core** | PHP 8.2+, Laravel 12 | Framework utama dengan arsitektur modular & service pattern |
+| **Frontend Styling** | Tailwind CSS v4.0 | Vanilla CSS bercita rasa enterprise yang sangat ringan & cepat |
+| **Interaktivitas UI** | Alpine.js | Micro-framework JS tanpa kompleksitas virtual DOM berlebihan |
+| **Database** | MySQL / MariaDB | Penyimpanan relasional riwayat pencarian, metrik, & laporan koreksi |
+| **Queue & Background** | Laravel Queue (Supervisor/Horizon) | Pemrosesan scraping & analisis AI asinkron di belakang layar |
+| **PDF Generator** | Barryvdh DomPDF | Rendering laporan resmi berformat A4 |
+| **Iconography** | Lucide Icons | Set ikon vektor konsisten bergaya modern bersih |
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📚 Dokumentasi Resmi
+
+Proyek ini dilengkapi dengan dokumentasi terstruktur berurutan (*logical reading order*) yang tersimpan di dalam direktori `docs/`:
+
+1. [**00-index.md**](docs/00-index.md) — Indeks utama panduan dokumentasi proyek.
+2. [**01-prd.md**](docs/01-prd.md) — *Product Requirements Document* (Spesifikasi produk & alur kerja).
+3. [**02-design.md**](docs/02-design.md) — *Design Philosophy & UI/UX Guidelines* (Aturan visual Modern Enterprise).
+4. [**03-api-guide.md**](docs/03-api-guide.md) — Panduan konfigurasi API LLM (OpenAI, Gemini, Claude, dll) & Scraping.
+5. [**04-tasks.md**](docs/04-tasks.md) — Roadmap pengembangan & daftar periksa tugas (100% Selesai ✅).
+6. [**05-queue-worker-production.md**](docs/05-queue-worker-production.md) — Panduan deployment Queue Worker pada server Linux.
+7. [**GEMINI.md**](GEMINI.md) — Aturan kerja utama (*Single Source of Truth*) AI Agent & developer.
+
+---
+
+## 🚀 Panduan Instalasi & Penggunaan
+
+### 1. Persyaratan Sistem (*Prerequisites*)
+- PHP >= 8.2
+- Composer
+- MySQL / MariaDB Server
+- Node.js & NPM
+
+### 2. Langkah Instalasi
+
+```bash
+# 1. Kloning repositori proyek
+git clone https://github.com/hndko/app_trustcheck_laravel12.git
+cd app_trustcheck_laravel12
+
+# 2. Install dependensi backend & frontend
+composer install
+npm install
+
+# 3. Salin konfigurasi environment
+cp .env.example .env
+
+# 4. Generate application key
+php artisan key:generate
+```
+
+### 3. Konfigurasi Database & API Key (`.env`)
+Sesuaikan kredensial database dan pilih provider AI pilihan Anda pada berkas `.env`:
+
+```ini
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=db_trustcheck_laravel12
+DB_USERNAME=root
+DB_PASSWORD=
+
+# Pilihan AI Provider: openai, gemini, claude, openrouter, custom
+AI_PROVIDER=gemini
+GEMINI_API_KEY=your_gemini_api_key_here
+GEMINI_MODEL=gemini-2.5-flash
+```
+
+### 4. Migrasi & Seeder Database
+
+```bash
+# Jalankan migrasi beserta seeder data awal & akun Superadmin
+php artisan migrate --seed
+```
+
+> **Akses Akun Superadmin:**
+> - Email: `superadmin@example.com`
+> - Kata Sandi: `password`
+> - URL Portal Kelola: `http://localhost:8000/portal-kelola`
+
+### 5. Menjalankan Server Pengembangan
+
+Buka 2 terminal terpisah untuk menjalankan *development server* dan *asset bundler*:
+
+```bash
+# Terminal 1: Menjalankan server Laravel
+php artisan serve
+
+# Terminal 2: Menjalankan Vite asset bundler
+npm run dev
+```
+
+Aplikasi kini dapat diakses melalui peramban pada alamat **`http://localhost:8000`**.
+
+---
+
+## 👨‍💻 Konsep & Portofolio Pengembang
+
+Proyek **TrustCheck AI** dikembangkan sebagai bukti konsep (*Proof of Concept* / Portofolio Showpiece) dalam membangun aplikasi bisnis kelas enterprise yang memadukan keandalan framework **Laravel 12**, antarmuka bersih **Tailwind CSS v4**, serta integrasi kecerdasan buatan (**Multi-LLM Engine**) secara aman, asinkron, dan terstruktur.
+
+---
+
+## ⚖️ Lisensi & Disclaimer Hukum
+
+- **Lisensi:** Kode sumber aplikasi ini dirilis di bawah [Lisensi MIT](https://opensource.org/licenses/MIT).
+- **Pernyataan Sanggahan (*Legal Disclaimer*):** TrustCheck AI bukan merupakan lembaga penegak hukum, penasihat keuangan, maupun biro investigasi swasta. Seluruh informasi dan *Trust Score* yang disajikan dihasilkan oleh algoritma kecerdasan buatan dari pengumpulan data publik online secara otomatis. Karena data diekstraksi secara terbuka, ketidakakuratan dapat terjadi jika situs sumber mengalami perubahan. Pengguna disarankan melakukan verifikasi mandiri melalui daftar referensi tautan sumber yang disediakan di setiap laporan.
+
+<div align="center">
+<p class="mt-8 text-xs text-slate-500">Dibuat dengan ❤️ menggunakan Laravel 12 & AI Engineering</p>
+</div>
