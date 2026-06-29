@@ -97,7 +97,7 @@
 
     <!-- Recent Analyses Table -->
     <div class="bg-[#1E293B] rounded-2xl border border-[#334155] shadow-sm overflow-hidden">
-        <div class="p-6 border-b border-[#334155] flex items-center justify-between">
+        <div class="p-4 sm:p-6 border-b border-[#334155] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
                 <i data-lucide="history" class="w-4 h-4 text-[#38BDF8]"></i>
                 <span>Log Aktivitas Analisis Due Diligence Terkini</span>
@@ -136,12 +136,7 @@
                             </td>
                             <td class="py-4 px-6 text-center font-black text-[#38BDF8]">{{ $comp->trust_score }}</td>
                             <td class="py-4 px-6 text-center">
-                                @php
-                                    $badge = 'bg-[#EF4444]/20 text-[#EF4444]';
-                                    if ($comp->risk_level === 'LOW RISK') $badge = 'bg-[#10B981]/20 text-[#10B981]';
-                                    if ($comp->risk_level === 'MEDIUM RISK') $badge = 'bg-[#F59E0B]/20 text-[#FBBF24]';
-                                @endphp
-                                <span class="px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase {{ $badge }}">{{ $comp->risk_level }}</span>
+                                <span class="px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase {{ $comp->risk_level === 'LOW RISK' ? 'bg-[#10B981]/20 text-[#10B981]' : ($comp->risk_level === 'MEDIUM RISK' ? 'bg-[#F59E0B]/20 text-[#FBBF24]' : 'bg-[#EF4444]/20 text-[#EF4444]') }}">{{ $comp->risk_level }}</span>
                             </td>
                             <td class="py-4 px-6 text-right text-xs text-[#94A3B8]">{{ $comp->updated_at ? $comp->updated_at->diffForHumans() : '-' }}</td>
                         </tr>
