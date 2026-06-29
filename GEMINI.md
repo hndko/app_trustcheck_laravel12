@@ -48,14 +48,14 @@ Dokumen ini berisi informasi lengkap spesifikasi project **TrustCheck AI** sekal
 Jika terdapat konflik antara kebiasaan umum penulisan kode dengan aturan di bawah ini, maka aturan pada dokumen `GEMINI.md` ini yang **wajib diprioritaskan**.
 
 ### 1. Pedoman Utama & Bahasa Komunikasi
-- **Single Source of Truth:** Seluruh pengembangan kode dan UI wajib mengacu pada `GEMINI.md`, `docs/prd.md`, dan `docs/design.md`.
+- **Single Source of Truth:** Seluruh pengembangan kode dan UI wajib mengacu pada `GEMINI.md`, `docs/01-prd.md`, dan `docs/02-design.md`.
 - **Aturan Bahasa (Wajib):**
   - Seluruh elemen antarmuka yang dibaca oleh pengguna (*user-facing text*), seperti teks halaman web, **alert**, notifikasi *toast*, pesan error, *empty state*, label form, *placeholder*, dan teks *disclaimer* **WAJIB menggunakan Bahasa Indonesia** yang formal, profesional, jelas, dan baku.
   - Untuk struktur file, penamaan variabel, *function/method*, *controller*, *model*, migrasi database, dan komentar kode teknis diperbolehkan dan disarankan menggunakan **Bahasa Inggris** sesuai standar ekosistem Laravel.
   - **Aturan Disclaimer & Verifikasi Publik:** Seluruh laporan hasil analisis due diligence (web maupun PDF) serta jawaban FAQ wajib mencantumkan kalimat sanggahan standar: *"Karena data diekstraksi secara otomatis dari sumber terbuka publik, ketidakakuratan dapat terjadi jika situs sumber mengalami perubahan. Anda dapat melakukan verifikasi mandiri melalui daftar referensi sumber tautan yang kami sediakan di bagian bawah laporan."*
 - **Integritas Kode:** Lakukan perubahan kode secara terisolasi dan spesifik. Dilarang menghapus fitur, komentar, atau file lain yang tidak terkait langsung dengan instruksi kerja.
 
-### 2. Aturan UI/UX & Design Philosophy (Mengacu pada `docs/design.md`)
+### 2. Aturan UI/UX & Design Philosophy (Mengacu pada `docs/02-design.md`)
 - **Konsep Visual:** *Modern Enterprise, Flat Design, Professional, Trust, Fast, Clean, Minimal*. Tampilan harus terasa seperti aplikasi bisnis tingkat enterprise (sekelas Stripe, GitHub, Notion, Linear, atau Cloudflare).
 - **Pantangan Keras Desain (*Strictly Forbidden*):**
   - ❌ **Dilarang** menggunakan *Glassmorphism, Neon UI, Heavy Gradients, Blur Background*, atau efek *Morphism/Skeuomorphism*.
@@ -122,7 +122,7 @@ Jika terdapat konflik antara kebiasaan umum penulisan kode dengan aturan di bawa
   - Gunakan `grow` (bukan `flex-grow`).
   - Gunakan `inset-s-0` / `inset-e-0` (bukan `start-0` / `end-0`).
   - Gunakan `bg-linear-to-r` (bukan `bg-gradient-to-r`).
-  - Ikon antarmuka menggunakan **Lucide Icons** sesuai arahan `docs/design.md`.
+  - Ikon antarmuka menggunakan **Lucide Icons** sesuai arahan `docs/02-design.md`.
 - **Larangan Query di Blade:** Dilarang keras melakukan query database atau memanggil Eloquent langsung di dalam file `.blade.php` (contoh: `Company::get()`). Seluruh data harus disiapkan oleh controller.
 - **Larangan Blok PHP di View:** Hindari penggunaan tag `@php ... @endphp` atau `<?php ... ?>` di dalam Blade. Pemetaan warna status (*badge*), kalkulasi skor, atau logika kondisional harus diproses di Controller, Service, atau Helper.
 - **Keutuhan Form & Halaman:** Halaman web wajib ditulis secara utuh dan mandiri. Jangan menggunakan `@include()` untuk memotong komponen utama.

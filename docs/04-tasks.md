@@ -97,7 +97,7 @@ Fase persiapan keamanan sistem sebelum diluncurkan ke publik agar tidak rentan s
 Fase peningkatkan kecepatan muat, keandalan antrean latar belakang, dan visibilitas organik di mesin pencari.
 
 - [x] **Konfigurasi Worker Antrean Production:**
-    - [x] Menyiapkan pedoman pemrosesan _background job_ menggunakan Supervisor atau Laravel Horizon (`docs/queue-worker-production.md`).
+    - [x] Menyiapkan pedoman pemrosesan _background job_ menggunakan Supervisor atau Laravel Horizon (`docs/05-queue-worker-production.md`).
 - [x] **Metadata SEO Dinamis & OpenGraph (OG Tags):**
     - [x] Menyematkan meta tag sosial dinamis pada halaman laporan agar menampilkan kartu cuplikan saat dibagikan ke media sosial.
 - [x] **Generator Sitemap Otomatis (`/sitemap.xml`):**
