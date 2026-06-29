@@ -66,8 +66,9 @@ Fase lanjutan untuk melengkapi kebutuhan pengguna bisnis tingkat tinggi.
 
 Fase persiapan keamanan sistem sebelum diluncurkan ke publik agar tidak rentan serangan bot dan kebocoran kuota LLM.
 
-- [ ] **Proteksi & Autentikasi Area Admin:**
-  - [ ] Membatasi akses rute `/admin` dengan middleware autentikasi / PIN sistem rahasia dari `.env`.
+- [ ] **Proteksi Rute dengan Permission & Logging Aktivitas:**
+  - [ ] Menginstal dan mengonfigurasi `spatie/laravel-permission` untuk proteksi rute berbasis izin spesifik (*permission-based*, tanpa mengandalkan *role*).
+  - [ ] Menginstal `spatie/laravel-activitylog` untuk mencatat riwayat pencarian dan aktivitas analitik due diligence AI.
 - [ ] **Pembatasan Kecepatan Pencarian (Rate Limiting):**
   - [ ] Menerapkan *throttling* pada endpoint `POST /search` (misalnya maksimal 5 pencarian per menit per IP).
 - [ ] **Integrasi Proteksi Anti-Bot:**

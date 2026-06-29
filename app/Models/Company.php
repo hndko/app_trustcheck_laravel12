@@ -6,10 +6,20 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Company extends Model
 {
-    use HasUuids;
+    use HasUuids, LogsActivity;
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['name', 'trust_score', 'risk_level', 'status'])
+            ->logOnlyDirty()
+            ->setDescriptionForEvent(fn(string $eventName) => "Company {$eventName}");
+    }
 
     protected $fillable = [
         'name',
