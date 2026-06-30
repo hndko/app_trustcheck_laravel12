@@ -18,6 +18,8 @@ Direktori ini berisi seluruh pedoman, rancangan arsitektur, spesifikasi teknis, 
    *Pedoman pengaturan sistem antrean latar belakang (*background job worker*) pada Linux server menggunakan Supervisor atau Laravel Horizon.*
 6. [**06-design-concept-login-dashboard.md**](file:///d:/laragon/www/app_trustcheck_laravel12/docs/06-design-concept-login-dashboard.md) — **Konsep Desain Halaman Login & Dasbor (Modern Enterprise UI/UX)**
    *Panduan filosofis visual agar tampilan portal autentikasi dan dasbor kelola tidak kaku, responsif penuh, dan menghindari kesan stereotip AI template.*
+7. [**07-deployment-guide-vps-shared-hosting.md**](file:///d:/laragon/www/app_trustcheck_laravel12/docs/07-deployment-guide-vps-shared-hosting.md) — **Panduan Lengkap Deployment Production (Cloud VPS & Shared Hosting)**
+   *Langkah demi langkah peluncuran aplikasi ke server produksi, mulai dari Nginx + Supervisor di Cloud VPS hingga strategi pemisahan folder core dan pemrosesan antrean di Shared Hosting.*
 
 ---
 
